@@ -16,7 +16,7 @@ const allDrivers = async () => {
             image: driverData.image.url || "https://images.squarespace-cdn.com/content/v1/5041475ac4aa99448132115f/1678818503863-3TYIXGRUMHR7XW0W43U4/IMG_2208.JPG",
             nationality: driverData.nationality,
             birthdate: driverData.dob,
-            teams: driverData.teams 
+            teams: driverData.teams,
           };
         })
       );
@@ -43,8 +43,8 @@ const allDrivers = async () => {
       image: driver.image,
       nationality: driver.nationality,
       birthdate: driver.birthdate,
-      teams: driver.Team.map((team) => team.name),
-      createDB: driver.createDB,
+      teams: driver.Team ? driver.Team.map((team) => team.name) : [], // Check if driver.Team is defined
+  createDB: driver.createDB,
     }));
 
     const allData = [...dataDriver, ...dbDataDrivers];
