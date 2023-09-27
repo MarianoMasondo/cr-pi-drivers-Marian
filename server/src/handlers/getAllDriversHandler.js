@@ -1,3 +1,4 @@
+const allDrivers = require("../controllers/getAllDriversController");
 
 
 const getAllDrivers = async(req,res) => {

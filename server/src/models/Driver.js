@@ -4,7 +4,7 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('Driver', {
-    ID:{
+    Id:{
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
@@ -27,7 +27,7 @@ module.exports = (sequelize) => {
       allowNull: false,     
 
     },
-    Nacionality:{
+    Nationality:{
       type: DataTypes.STRING,
       allowNull: false,
     },

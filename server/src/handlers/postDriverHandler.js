@@ -1,6 +1,6 @@
 const postNewDriver = async (req, res) =>{
-    const { Name, Lastname, Description, Image, Nacionality, Birthdate, Teams} = req.body;
-    if(!Name, !Lastname, !Description, !Image, !Nacionality, !Birthdate, !Teams){
+    const { Name, Lastname, Description, Image, Nationality, Birthdate, Teams} = req.body;
+    if(!Name, !Lastname, !Description, !Image, !Nationality, !Birthdate, !Teams){
         return res.status(404).send("Data missing to crate driver")
     }
     try{
@@ -9,7 +9,7 @@ const postNewDriver = async (req, res) =>{
             Lastname,
             Description,
             Image,
-            Nacionality,
+            Nationality,
             Birthdate,
             Teams,
         );
