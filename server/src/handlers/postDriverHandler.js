@@ -1,22 +1,13 @@
-const postNewDriver = async (req, res) =>{
-    const { Name, Lastname, Description, Image, Nationality, Birthdate, Teams} = req.body;
-    if(!Name, !Lastname, !Description, !Image, !Nationality, !Birthdate, !Teams){
-        return res.status(404).send("Data missing to crate driver")
-    }
-    try{
-        const createDriver = await postNewDriver(
-            Name,
-            Lastname,
-            Description,
-            Image,
-            Nationality,
-            Birthdate,
-            Teams,
-        );
-        res.status(200).json(createDriver)
-    } catch(error){
-        res.status(404).json({error: error.message})
-    }
+const createDataDriver = require("../controllers/postDriverController");
 
-}
+const postNewDriver = async (req,res) => {
+    const { name, lastname, description, image, nationality, birthdate, teams} = req.body;
+    try {
+        const newDriver = await createDataDriver( name, lastname, description, image, nationality, birthdate, teams);
+        res.status(201).json(newDriver);
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+};
+
 module.exports = postNewDriver;

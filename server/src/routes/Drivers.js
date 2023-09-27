@@ -7,6 +7,7 @@ const getDriverById = require("../handlers/getDriverIdHandler");
 const driversRoutes = Router();
 driversRoutes.get("/:id", getDriverById); // Usar un parámetro de ruta para obtener un conductor por ID
 driversRoutes.get("/name", getNameDrivers);
+
 driversRoutes.post("/", postNewDriver);
 driversRoutes.get("/", getAllDrivers); // Ruta para obtener todos los conductores
 
