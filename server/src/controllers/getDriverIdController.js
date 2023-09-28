@@ -1,4 +1,3 @@
-//controller
 const axios = require("axios");
 const { Driver, Team } = require("../db");
 
