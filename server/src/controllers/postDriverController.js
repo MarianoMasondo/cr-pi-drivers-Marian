@@ -1,10 +1,8 @@
 const { Driver, Team } = require("../db");
 const Sequelize = require("sequelize");
 
-
 const createDataDriver = async (name, lastname, description, image, nationality, birthdate, teams) => {
-    try {
-        // Create the driver
+    try {       
         const newDriver = await Driver.create({
             name,
             lastname,
@@ -13,23 +11,20 @@ const createDataDriver = async (name, lastname, description, image, nationality,
             nationality,
             birthdate,
         });
-
-        // Find teams based on names in the array
+        
         const addTeams = await Team.findAll({
             where: {
                 name: {
-                    [Sequelize.Op.in]: teams, // Use Sequelize.Op.in to match multiple values
+                    [Sequelize.Op.in]: teams, 
                 },
             },
         });
-
-        // Associate the driver with teams
+        
         await newDriver.addTeams(addTeams);
-
-        // Fetch the driver with associated teams
+        
         const driverRelation = await Driver.findOne({
             where: {
-                id: newDriver.id, // Use newDriver.id instead of newDriver
+                id: newDriver.id, 
             },
             include: [{
                 model: Team,

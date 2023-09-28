@@ -43,7 +43,7 @@ const allDrivers = async () => {
       image: driver.image,
       nationality: driver.nationality,
       birthdate: driver.birthdate,
-      teams: driver.Team ? driver.Team.map((team) => team.name) : [], // Check if driver.Team is defined
+      teams: driver.Team ? driver.Team.map((team) => team.name) : [], 
   createDB: driver.createDB,
     }));
 

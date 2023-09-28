@@ -6,7 +6,7 @@ const getIdDrivers = async (req, res) => {
         const driver = await driverId(id);
         res.status(200).json(driver);
     } catch (error) {
-        res.status(400).json({ error: error.message }); // Fix the error here
+        res.status(400).json({ error: error.message }); 
     }
 };
 

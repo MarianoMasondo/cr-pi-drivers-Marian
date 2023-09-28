@@ -1,3 +1,5 @@
+const createDataDriver = require("../controllers/postDriverController");
+
 const postNewDriver = async (req, res) => {
     const { name, lastname, description, image, nationality, birthdate, teams } = req.body;
     

@@ -6,14 +6,14 @@ const allTeams = async () => {
     const response = await axios.get(`http://localhost:5000/drivers`);
     const drivers = response.data;
 
-    const uniqueTeamNames = new Set(); // Usar un conjunto para mantener los nombres únicos
+    const uniqueTeamNames = new Set(); 
 
     drivers.forEach(driver => {
       if (driver.teams) {
         let teams = driver.teams.split(/\s*,\s*/);
 
         teams.forEach(teamName => {
-          // Verificar si el nombre del equipo ya existe en el conjunto
+         
           if (!uniqueTeamNames.has(teamName)) {
             uniqueTeamNames.add(teamName);
 
@@ -28,9 +28,11 @@ const allTeams = async () => {
     });
 
     const allDataTeams = await Team.findAll();
+    console.log(allDataTeams.length)
     return allDataTeams;
-  } catch (error) {
-    throw error; // Puedes manejar los errores de manera más apropiada si es necesario.
+  } 
+  catch (error) {
+    throw error; 
   }
 };
 
