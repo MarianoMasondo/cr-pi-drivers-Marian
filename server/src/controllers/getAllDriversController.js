@@ -6,22 +6,20 @@ const allDrivers = async () => {
     let response = await axios.get(`http://localhost:5000/drivers`);
     let results = response.data;
 
-    const dataDriver = await Promise.all(
-        results.map(async (driverData) => {
-          return {
-            id: driverData.id,
-            name: driverData.name.forename,
-            lastname: driverData.name.surname,
-            description: driverData.description,
-            image: driverData.image.url || "https://images.squarespace-cdn.com/content/v1/5041475ac4aa99448132115f/1678818503863-3TYIXGRUMHR7XW0W43U4/IMG_2208.JPG",
-            nationality: driverData.nationality,
-            birthdate: driverData.dob,
-            teams: driverData.teams,
-          };
-        })
-      );
-      
-        
+    const dataDrivers = await Promise.all(
+      results.map(async (driverData) => {
+        return {
+          id: driverData.id,
+          name: driverData.name.forename,
+          lastname: driverData.name.surname,
+          description: driverData.description,
+          image: driverData.image.url || "https://images.squarespace-cdn.com/content/v1/5041475ac4aa99448132115f/1678818503863-3TYIXGRUMHR7XW0W43U4/IMG_2208.JPG",
+          nationality: driverData.nationality,
+          birthdate: driverData.dob,
+          teams: driverData.teams,
+        };
+      })
+    );
 
     const dbdata = await Driver.findAll({
       include: [
@@ -43,11 +41,10 @@ const allDrivers = async () => {
       image: driver.image,
       nationality: driver.nationality,
       birthdate: driver.birthdate,
-      teams: driver.Team ? driver.Team.map((team) => team.name) : [], 
-  createDB: driver.createDB,
+      teams: driver.Teams.map((team) => team.name), 
     }));
 
-    const allData = [...dataDriver, ...dbDataDrivers];
+    const allData = [...dataDrivers, ...dbDataDrivers];
     return allData;
   } catch (error) {
     throw error;
@@ -55,5 +52,6 @@ const allDrivers = async () => {
 };
 
 module.exports = allDrivers;
+
 
             

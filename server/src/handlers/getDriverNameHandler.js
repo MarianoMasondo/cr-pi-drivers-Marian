@@ -1,17 +1,16 @@
 const driverName = require("../controllers/getDriverNameController");
 
 const getNameDrivers = async (req, res) => {
-    const { name } = req.query;
-    const nameLower = name.toLowerCase();
-    console.log(nameLower);
+    const { name } = req.query;    
 
     try {
-        const drivers = await driverName(nameLower)
-        res.status(200).json(drivers);
-    }catch(error){
-        res.status(404).json({error: error.message})
+        const drivers = await driverName(name);        
+            res.status(200).json(drivers);
+        
+    } catch (error) {
+        res.status(400).json({ error: error.message });
     }
-}
+};
 
 module.exports = getNameDrivers;
 

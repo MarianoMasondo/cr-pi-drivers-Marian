@@ -5,8 +5,8 @@ const getAllDrivers = require("../handlers/getAllDriversHandler");
 const getDriverById = require("../handlers/getDriverIdHandler");
 
 const driversRoutes = Router();
-driversRoutes.get("/:id", getDriverById); 
 driversRoutes.get("/name", getNameDrivers);
+driversRoutes.get("/:id", getDriverById); 
 driversRoutes.get("/", getAllDrivers); 
 driversRoutes.post("/", postNewDriver);
 
