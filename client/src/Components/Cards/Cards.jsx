@@ -3,7 +3,7 @@ import Card from "../Card/Card";
 import "./Cards.css";
 
 const Cards = () => {
-  const drivers = useSelector((state) => state.drivers || [])
+  const drivers = useSelector((state) => state.drivers);
   return (
     <div className="cards-container">
       {drivers.map((driver) => (

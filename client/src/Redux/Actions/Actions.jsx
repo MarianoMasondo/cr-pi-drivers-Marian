@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { GET_DRIVERS,
+import { GET_DRIVERS, GET_DRIVER_DETAIL,
  } from "../ActionsTypes/ActionsTypes";
 
  export function getDrivers () {
@@ -10,5 +10,19 @@ import { GET_DRIVERS,
 } catch(error){
     console.log(error)
 }
+    }
+ }
+
+ export function getDriverDetail(id){
+    return async function (dispatch){
+        try {
+            const driverDetail = await axios.get(`http://localhost:3001/drivers/${id}`);
+            dispatch({
+                type: GET_DRIVER_DETAIL,
+                payload: driverDetail.data,
+            })
+        } catch(error){
+            console.log(error)
+        }
     }
  }
