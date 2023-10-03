@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { GET_DRIVERS, GET_DRIVER_DETAIL,
+import { GET_DRIVERS, GET_DRIVER_DETAIL, SEARCH_DRIVER,
  } from "../ActionsTypes/ActionsTypes";
 
  export function getDrivers () {
@@ -25,4 +25,11 @@ import { GET_DRIVERS, GET_DRIVER_DETAIL,
             console.log(error)
         }
     }
+ }
+
+ export const searchDriver = (name) => {
+    return {
+        type: SEARCH_DRIVER,
+        payload: name,
+    };
  }

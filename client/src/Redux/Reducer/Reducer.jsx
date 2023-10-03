@@ -1,5 +1,5 @@
 import {
-  GET_DRIVERS, GET_DRIVER_DETAIL
+  GET_DRIVERS, GET_DRIVER_DETAIL, SEARCH_DRIVER
 } from "../ActionsTypes/ActionsTypes";
 
 let initialState = {
@@ -23,6 +23,16 @@ const Reducer = (state = initialState, action) => {
         ...state,
         driverDetail: action.payload,
       };
+
+    case SEARCH_DRIVER:{
+      let driversCopy = [...state.driversCopy];      
+      return{
+        ...state,
+        drivers: driversCopy.filter((driver) =>
+        driver.name.toLowerCase().includes(action.paylad.toLowerCase())),
+        
+      }
+    }
 
       
     default:
