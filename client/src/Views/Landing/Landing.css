@@ -1,0 +1,59 @@
+.landing-container {
+    background-image: url("https://wallpapercave.com/wp/wp10008518.jpg");
+    background-size: cover; 
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column; 
+    justify-content: flex-start;
+    align-items: center;
+  }
+  
+  .content {
+    text-align: center;
+    color: white;
+    margin-top: 10%;
+  }
+  
+  h1 {
+    font-size: 5rem;
+    margin-top: 3%;
+    margin-bottom: 5%;
+    color: whitesmoke;
+  }  
+
+.landing-button {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    background-color: transparent;
+    border: 2px solid #fff;
+    border-radius: 15px;
+    color: #fff;
+    cursor: pointer;
+    animation: blink 1s infinite; 
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  }
+  
+  @keyframes blink {
+    0% {
+      background-color: transparent;
+      color: #fff;
+    }
+    50% {
+      background-color: #fff; 
+      color: #000; 
+    }
+    100% {
+      background-color: transparent;
+      color: #fff;
+    }
+  }  
+  
+  button:hover {
+    background-color: #fff;
+    color: #000;
+    border-color: #000;
+    animation: none; /* Detiene la animación al pasar el mouse sobre el botón */
+  }
+  
+ 

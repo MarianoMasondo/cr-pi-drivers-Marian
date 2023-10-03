@@ -1,0 +1,2 @@
+export const GET_DRIVERS = "GET_DRIVERS";
+export const GET_DRIVER_DETAIL = "GET_DRIVER_DETAIL";
