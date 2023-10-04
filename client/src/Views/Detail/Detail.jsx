@@ -16,7 +16,7 @@ const Detail = () => {
   return (
     <div className="detail-container">
       <Link to="/home">
-        <button className="back-home">Back to Home</button>
+        <button className="back-home">Home</button>
       </Link>
       
       <div className="driver-card">

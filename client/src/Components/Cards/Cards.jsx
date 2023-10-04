@@ -7,20 +7,22 @@ const Cards = () => {
   return (
     <div className="cards-container">
       {drivers.map((driver) => (
-        < Card
-        key={driver.id}
-        id={driver.id}
-        name={driver.name}
-        lastname={driver.lastname}
-        nationality={driver.nationality}
-        image={driver.image}
-        description={driver.description}
-        birthdate={driver.birthdate}
-        teams={driver.teams}
+        <Card
+          key={driver.id}
+          id={parseInt(driver.id)} // Convert id to number
+          name={driver.name}
+          lastname={driver.lastname}
+          nationality={driver.nationality}
+          image={driver.image}
+          description={driver.description}
+          birthdate={driver.birthdate}
+          teams={Array.isArray(driver.teams) ? driver.teams : []} // Ensure teams is an array or an empty array
         />
       ))}
     </div>
-  )
+  );
 }
 
 export default Cards;
+
+

@@ -10,7 +10,7 @@ let initialState = {
 }
 
 const Reducer = (state = initialState, action) => {
-  const itemsPerPage = 9;
+  
   let driverOrder;
   let driversDob;
 
@@ -18,8 +18,8 @@ const Reducer = (state = initialState, action) => {
     case GET_DRIVERS:
       return {
         ...state,
-        drivers: [...action.payload].splice(0, itemsPerPage),
-        driversCopy: [...action.payload] 
+        drivers: action.payload,
+        driversCopy: action.payload 
       };
 
     case GET_DRIVER_DETAIL:
