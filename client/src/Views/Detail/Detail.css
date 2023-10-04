@@ -1,10 +1,87 @@
 .detail-container {
-    background-image: url("https://wallpapercave.com/wp/wp11966684.jpg");
-    background-size: cover; 
-    background-position: center;
-    height: 100vh;
-    display: flex;
-    flex-direction: column; 
-    justify-content: flex-start;
-    align-items: center;
-  }
+  background-image: url("https://wallpapercave.com/wp/wp11966684.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 20px;
+}
+
+.driver-card {
+  background-image: url("https://www.shutterstock.com/shutterstock/videos/1047286942/thumb/1.jpg");
+  width: 40%;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  margin-top: 20px;
+}
+
+.driver-info {
+  display: flex;
+  align-items: center;
+  width: 50%;
+  margin-bottom: 10px;
+}
+
+.info-left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
+}
+
+.info-center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info-right {
+  flex: 1;
+  text-align: left;
+}
+
+.logo-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.logo {
+  height: 50px;
+  
+}
+
+.license-text {
+  font-size: 25px;
+  font-weight: bold;
+  margin-right: 0px;
+}
+
+.img-container {
+  
+  height: 300px;
+  width: 300px;
+  border-radius: 20px;
+}
+
+.driver-field {
+  display: flex;
+  flex-direction: row;
+  margin: 5px 40px;
+  text-align: center;
+}
+
+.driver-description {
+  text-align: left;
+}
+
+
+
+
+  

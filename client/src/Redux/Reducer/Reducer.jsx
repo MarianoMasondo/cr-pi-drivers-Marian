@@ -1,14 +1,18 @@
 import {
-  GET_DRIVERS, GET_DRIVER_DETAIL, SEARCH_DRIVER
+  GET_DRIVERS, GET_DRIVER_DETAIL, ORDER_ASC_DESC, ORDER_BY_DOB, SEARCH_DRIVER
 } from "../ActionsTypes/ActionsTypes";
 
 let initialState = {
   drivers: [],
-  driversCopy: []
+  driversCopy: [],
+  driverDetail: [],
+  searchDriver:[],
 }
 
 const Reducer = (state = initialState, action) => {
   const itemsPerPage = 9;
+  let driverOrder;
+  let driversDob;
 
   switch(action.type) {
     case GET_DRIVERS:
@@ -34,6 +38,29 @@ const Reducer = (state = initialState, action) => {
       }
     }
 
+    case ORDER_ASC_DESC:
+  driverOrder = [...state.drivers];
+  driverOrder.sort((a, b) => {
+    if (action.payload === "asc") {
+      return a.name.localeCompare(b.name);
+    } else {
+      return b.name.localeCompare(a.name);
+    }
+  });
+  return {
+    ...state,
+    drivers: driverOrder,
+  }
+
+
+      case ORDER_BY_DOB:
+        driversDob = action.payload === "lowest"
+        ? [...state.drivers].sort((a,b) => b.birthday - a.birthday)
+        : [...state.drivers].sort((a,b) => a.birthday - b.birthday);
+        return{
+          ...state,
+          drivers: driversDob
+        }
       
     default:
       return state;

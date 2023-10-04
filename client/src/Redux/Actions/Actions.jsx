@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { GET_DRIVERS, GET_DRIVER_DETAIL, SEARCH_DRIVER,
+import { GET_DRIVERS, GET_DRIVER_DETAIL, ORDER_ASC_DESC, ORDER_BY_DOB, SEARCH_DRIVER,
  } from "../ActionsTypes/ActionsTypes";
 
  export function getDrivers () {
@@ -32,4 +32,17 @@ import { GET_DRIVERS, GET_DRIVER_DETAIL, SEARCH_DRIVER,
         type: SEARCH_DRIVER,
         payload: name,
     };
+ }
+
+ export const orderDrivers = (payload) => {
+    return {
+        type: ORDER_ASC_DESC,
+        payload
+    }
+ }
+ export const orderByDob = (payload) => {
+    return {
+        type: ORDER_BY_DOB,
+        payload
+    }
  }

@@ -1,3 +1,5 @@
 export const GET_DRIVERS = "GET_DRIVERS";
 export const GET_DRIVER_DETAIL = "GET_DRIVER_DETAIL";
 export const SEARCH_DRIVER = "SEARCH_DRIVER";
+export const ORDER_ASC_DESC = "ORDER_ASC_DESC";
+export const ORDER_BY_DOB = "ORDER_BY_DOB";
