@@ -44,7 +44,7 @@
 .child:hover {
   background-color: white;
   transform: rotate3d(0.1, 0, 0);
-  box-shadow: 0px 10px 10px rgb(216, 220, 230);
+  box-shadow: 0px 0px 10px 13px rgb(216, 220, 230);
 }
 
 .btn {

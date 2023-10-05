@@ -1,11 +1,15 @@
 import "./About.css";
 import picture from "../../assets/picture.png";
+import { Link } from "react-router-dom";
 
 export default function About() {
   return (
     <div className="about-container">
       <div className="backgroundImageContainer">
         <div className="card-about">
+      <Link to="/home">
+        <button className="back-home">Home</button>
+      </Link>
           <h1>Hi! I am Mariano, a Web Developer.</h1>
           <p>
             I am passionate about technology on my way to becoming a full stack

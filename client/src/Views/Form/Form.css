@@ -4,7 +4,8 @@
     background-position: center;
     height: 100vh;
     display: flex;
-    flex-direction: column; 
-    justify-content: flex-start;
+    flex-direction: row; 
+    justify-content:center;
     align-items: center;
   }
+  

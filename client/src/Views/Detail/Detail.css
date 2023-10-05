@@ -5,28 +5,33 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   align-items: center;
   padding: 20px;
 }
 
 .driver-card {
-  background-image: url("https://www.shutterstock.com/shutterstock/videos/1047286942/thumb/1.jpg");
+  background-color: rgba(33, 31, 31, 0.8);
   width: 40%;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 30px rgba(245, 243, 243, 0.2);
   margin-top: 20px;
+  display: flex;
+  flex-direction: column; /* Cambia la dirección a columna para apilar los elementos verticalmente */
+  align-items: center; /* Centrar horizontalmente */
 }
 
+
 .driver-info {
+  color: white;
   display: flex;
   align-items: center;
-  width: 50%;
+  width: 100%; /* Ocupar todo el ancho de la tarjeta */
   margin-bottom: 10px;
 }
 
 .info-left {
+  color: aliceblue;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -34,6 +39,7 @@
 }
 
 .info-center {
+  color: aliceblue;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -54,7 +60,6 @@
 
 .logo {
   height: 50px;
-  
 }
 
 .license-text {
@@ -64,20 +69,20 @@
 }
 
 .img-container {
-  
-  height: 300px;
-  width: 300px;
+  height: 250px;
+  width: 250px;
   border-radius: 20px;
 }
 
 .driver-field {
   display: flex;
   flex-direction: row;
-  margin: 5px 40px;
+  margin-left: 30px;
   text-align: center;
 }
 
 .driver-description {
+  color: aliceblue;
   text-align: left;
 }
 

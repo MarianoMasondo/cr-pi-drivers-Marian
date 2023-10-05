@@ -15,11 +15,11 @@ const Detail = () => {
 
   return (
     <div className="detail-container">
+      
+      <div className="driver-card">
       <Link to="/home">
         <button className="back-home">Home</button>
       </Link>
-      
-      <div className="driver-card">
         <div className="info-left">
           <div className="logo-container">
             <img
@@ -27,7 +27,7 @@ const Detail = () => {
               className="logo"
               alt="F1 Logo"
             />
-            <p className="license-text">Driver License</p>
+            <p className="license-text">Driver Detail</p>
           </div>
         </div>
         <div className="info-center">

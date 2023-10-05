@@ -8,16 +8,12 @@ const Card = ({ id, name, lastname, teams, image }) => {
     <div className="card">
   <div ><img src={image} alt={name} className="image"/></div>
   <div className="card-info">
-  <span>{name} {lastname}</span>
-  <div>
+    <span>{name} {lastname}</span>
+    <div>
     <label>Teams:</label>
-    <ul>
-      {teams.map((team, index) => (
-        <li key={index}>{team}</li>
-      ))}
-    </ul>
-  </div>
-</div>
+    <p>{teams}</p>
+    </div>
+  </div>  
 </div>
   </Link>
   );
@@ -27,10 +23,9 @@ Card.propTypes = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   lastname: PropTypes.string.isRequired,
+  teams: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
-  teams: PropTypes.array.isRequired, 
 };
-
 
 export default Card;
 
