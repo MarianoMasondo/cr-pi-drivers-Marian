@@ -8,3 +8,11 @@
     justify-content: flex-start;
     align-items: center;
   }
+  
+  .filter-container {
+    display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  }
