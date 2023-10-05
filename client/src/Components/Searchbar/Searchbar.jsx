@@ -12,7 +12,6 @@ const Searchbar = () => {
     const searchValue = e.target.value;
     setName(searchValue);
     dispatch(searchDriver(searchValue))
-
   }
 
   return (
@@ -30,4 +29,4 @@ const Searchbar = () => {
   )
 }
 
-export default Searchbar
+export default Searchbar;

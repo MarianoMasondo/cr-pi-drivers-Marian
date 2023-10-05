@@ -9,10 +9,10 @@ let initialState = {
   searchDriver:[],
 }
 
-const Reducer = (state = initialState, action) => {
-  
+const Reducer = (state = initialState, action) => {  
   let driverOrder;
   let driversDob;
+  let driversCopy
 
   switch(action.type) {
     case GET_DRIVERS:
@@ -29,11 +29,11 @@ const Reducer = (state = initialState, action) => {
       };
 
     case SEARCH_DRIVER:{
-      let driversCopy = [...state.driversCopy];      
+      driversCopy = [...state.driversCopy];            
       return{
         ...state,
-        drivers: driversCopy.filter((driver) =>
-        driver.name.toLowerCase().includes(action.paylad.toLowerCase())),
+        drivers: driversCopy.filter((driver) => 
+      driver.name.toLowerCase().includes(action.payload.toLowerCase())),  
         
       }
     }

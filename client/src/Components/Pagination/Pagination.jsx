@@ -1,4 +1,3 @@
-// Pagination.jsx
 import "./Pagination.css";
 import PropTypes from "prop-types";
 
@@ -8,9 +7,9 @@ const Pagination = ({
   allDrivers,
   paginate,
 }) => {
+  const pages = [];
   const totalPages = Math.ceil(allDrivers.length / driversPerPage);
 
-  const pages = [];
   for (let i = 1; i <= totalPages; i++) {
     pages.push(i);
   }
@@ -40,3 +39,4 @@ Pagination.propTypes = {
 };
 
 export default Pagination;
+
