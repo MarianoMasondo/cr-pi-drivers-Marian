@@ -1,5 +1,5 @@
 import './App.css'
-import { Route, BrowserRouter, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Home from './Views/Home/Home';
 import Landing from './Views/Landing/Landing';
 import Form from './Views/Form/Form';
@@ -7,21 +7,28 @@ import Detail from './Views/Detail/Detail';
 import Navbar from './Components/Navbar/Navbar';
 import About from './Views/About/About';
 
-function App() {  
+function App() {
+  const location = useLocation();
+
+  // Verifica si la ubicación actual es la página de inicio (Landing)
+  const isLandingPage = location.pathname === '/';
+
   return (
-    <BrowserRouter>
+    
       <div className='App'>
-        {location.pathname !==  "/" && <Navbar />}
+        {/* Muestra la Navbar solo si no estamos en la página de inicio */}
+        {!isLandingPage && <Navbar />}
         <Routes>
-          <Route exact path ={"/"} element={<Landing />} />
-          <Route path ={"/home"} element={<Home />} />
-          <Route path ={"/detail/:id"} element={<Detail />} />
-          <Route path ={"/form"} element={<Form />} />          
-          <Route path ={"/about"} element={<About />} />          
+          <Route exact path={"/"} element={<Landing />} />
+          <Route path={"/home"} element={<Home />} />
+          <Route path={"/detail/:id"} element={<Detail />} />
+          <Route path={"/form"} element={<Form />} />
+          <Route path={"/about"} element={<About />} />
         </Routes>
-      </ div>    
-    </BrowserRouter>
+      </div>
+   
   )
 }
 
 export default App;
+

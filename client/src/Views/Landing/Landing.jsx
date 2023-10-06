@@ -5,11 +5,11 @@ const Landing = () => {
   return (
     <div className="landing-container">
         <div>
-            <h1>Welcome to Drivers App</h1>
+            <h1 className="landing-h1">Welcome to Drivers App</h1>
         </div>
         <div>
             <Link to={"/home"}>
-                <button className="landing-button">Enter</button>
+                <button className="landing-button" type="submit">Enter</button>
             </Link>
         </div>
         

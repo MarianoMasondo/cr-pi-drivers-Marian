@@ -2,7 +2,7 @@ import {
   FILTER_ALL_TEAMS,
   FILTER_APIDB,
   FILTER_TEAMS,
-  GET_DRIVERS, GET_DRIVER_DETAIL, ORDER_ASC_DESC, ORDER_BY_DOB, SEARCH_DRIVER
+  GET_DRIVERS, GET_DRIVER_DETAIL, ORDER_ASC_DESC, ORDER_BY_DOB, PAGINATE, SEARCH_DRIVER
 } from "../ActionsTypes/ActionsTypes";
 
 const removeAccents = (str) => {
@@ -18,7 +18,9 @@ let initialState = {
   driverDetail: [],
   searchDriver:[],
   teams: [],
-  driversApiDb: []
+  driversApiDb: [],
+  currentPage: 0,
+  
 }
 
 const Reducer = (state = initialState, action) => {  
@@ -27,13 +29,15 @@ const Reducer = (state = initialState, action) => {
   let driversCopy;
   let driverTeams;
   let driversApiDb;
-  let apiDbCopy
+  let apiDbCopy;
+  let itemsPerPage = 9;
+  let next_page, prev_page, firstIndex;
 
   switch(action.type) {
     case GET_DRIVERS:
       return {
         ...state,
-        drivers: action.payload,
+        drivers: [...action.payload].splice(0, itemsPerPage),
         driversCopy: action.payload 
       };
 
@@ -71,16 +75,18 @@ const Reducer = (state = initialState, action) => {
   return {
     ...state,
     drivers: driverOrder,
+    currentPage: 0,
   }
 
 
       case ORDER_BY_DOB:
-        driversDob = action.payload === "lowest"
+        driversDob = action.payload === "youngers"
         ? [...state.drivers].sort((a,b) => b.birthday - a.birthday)
         : [...state.drivers].sort((a,b) => a.birthday - b.birthday);
         return{
           ...state,
-          drivers: driversDob
+          drivers: driversDob,
+          currentPage: 0,
         }
       
         case FILTER_ALL_TEAMS:
@@ -101,23 +107,45 @@ const Reducer = (state = initialState, action) => {
          return {
           ...state,
           drivers: driverTeams,
+          currentPage: 0,
         };
 
-         case FILTER_APIDB:
-          apiDbCopy = state.driversCopy;
-          driversApiDb =
-          action.payload ==="datatbase"
-          ? apiDbCopy.filter((driver) => driver.createDb)
-          : apiDbCopy.filter((driver) => !driver.createDb);
+        case FILTER_APIDB:
+          apiDbCopy = [...state.driversCopy];
+          driversApiDb = [];
+          if (action.payload === "database") {
+              driversApiDb = apiDbCopy.filter((driver) => driver.createDb);
+          } else if (action.payload === "api") {
+              driversApiDb = apiDbCopy.filter((driver) => !driver.createDb);
+          }
           return {
-            ...state,
-            drivers: action.payload === "all" ? apiDbCopy : driversApiDb
+              ...state,
+              drivers: action.payload === "all" ? apiDbCopy : driversApiDb,
+              currentPage: 0,
           }
 
+          case PAGINATE:
+  next_page = state.currentPage + 1;
+  prev_page = state.currentPage - 1;
+  firstIndex =
+    action.payload === "next"
+      ? next_page * itemsPerPage
+      : prev_page * itemsPerPage;
 
+  driversCopy = state.driversCopy; 
 
+  if (action.payload === "next" && firstIndex >= driversCopy.length)
+    return state;
+  else if (action.payload === "prev" && prev_page < 0) return state;
 
-
+  return {
+    ...state,
+    drivers: [...driversCopy].slice( 
+      firstIndex,
+      firstIndex + itemsPerPage
+    ),
+    currentPage: action.payload === "next" ? next_page : prev_page,
+  };
 
     default:
       return state;

@@ -24,9 +24,15 @@ const Filter = () => {
     }
 
     const handleSourceFilter = (e) => {
-        setSelectedTeam(e.target.value);
-        dispatch(filterApiDb(e.target.value))
+        const selectedValue = e.target.value;
+        setSelectedTeam(selectedValue);
+        if (selectedValue === "database") {
+            dispatch(filterApiDb("database")); // Pasa la opción "database" al reducer
+        } else {
+            dispatch(filterApiDb("api")); // Pasa la opción "api" al reducer (o cualquier otra opción según tu lógica)
+        }
     }
+    
   return (
     <div className="filter-container">
         <div>
