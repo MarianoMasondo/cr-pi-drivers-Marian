@@ -64,7 +64,8 @@ const Reducer = (state = initialState, action) => {
       
 
     case ORDER_ASC_DESC:
-  driverOrder = [...state.drivers];
+  driverOrder = [...state.driversCopy];
+  
   driverOrder.sort((a, b) => {
     if (action.payload === "asc") {
       return a.name.localeCompare(b.name);
@@ -74,20 +75,36 @@ const Reducer = (state = initialState, action) => {
   });
   return {
     ...state,
+    
     drivers: driverOrder,
     currentPage: 0,
   }
 
 
-      case ORDER_BY_DOB:
-        driversDob = action.payload === "youngers"
-        ? [...state.drivers].sort((a,b) => b.birthday - a.birthday)
-        : [...state.drivers].sort((a,b) => a.birthday - b.birthday);
-        return{
-          ...state,
-          drivers: driversDob,
-          currentPage: 0,
-        }
+      // case ORDER_BY_DOB:
+      //   driversDob = action.payload === "youngers"
+      //   ? [...state.drivers].sort((a,b) => b.birthday - a.birthday)
+      //   : [...state.drivers].sort((a,b) => a.birthday - b.birthday);
+      //   return{
+      //     ...state,
+      //     drivers: driversDob,
+      //     currentPage: 0,
+      //   }
+
+      // Reducer
+case ORDER_BY_DOB:
+  
+  driversDob = action.payload === "asc"
+    ? [...state.drivers].sort((a, b) => (a.birthday - b.birthday))
+    : [...state.drivers].sort((a, b) => (b.birthday - a.birthday));
+    
+  return {
+    ...state,
+    drivers: driversDob,
+    currentPage: 0,
+  }
+
+
       
         case FILTER_ALL_TEAMS:
           return{
@@ -111,18 +128,17 @@ const Reducer = (state = initialState, action) => {
         };
 
         case FILTER_APIDB:
-          apiDbCopy = [...state.driversCopy];
-          driversApiDb = [];
-          if (action.payload === "database") {
-              driversApiDb = apiDbCopy.filter((driver) => driver.createDb);
-          } else if (action.payload === "api") {
-              driversApiDb = apiDbCopy.filter((driver) => !driver.createDb);
-          }
+          apiDbCopy = state.driversCopy;
+          driversApiDb = 
+          action.payload === "database" 
+            ? apiDbCopy.filter((driver) => driver.createDb)
+            : apiDbCopy.filter((driver) => !driver.createDb)
           return {
               ...state,
               drivers: action.payload === "all" ? apiDbCopy : driversApiDb,
               currentPage: 0,
           }
+
 
           case PAGINATE:
   next_page = state.currentPage + 1;

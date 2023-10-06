@@ -21,7 +21,7 @@ const allDrivers = async () => {
       })
     );
 
-    const dbdata = await Driver.findAll({
+    const dbData = await Driver.findAll({
       include: [
         {
           model: Team,
@@ -33,16 +33,40 @@ const allDrivers = async () => {
       ],
     });
 
-    const dbDataDrivers = dbdata.map((driver) => ({
-      id: driver.id,
-      name: driver.name,
-      lastname: driver.lastname,
-      description: driver.description,
-      image: driver.image,
-      nationality: driver.nationality,
-      birthdate: driver.birthdate,
-      teams: driver.Teams.map((team) => team.name), 
-    }));
+    // const dbDataDrivers = dbdata.map((driver) => ({
+    //   id: driver.id,
+    //   name: driver.name,
+    //   lastname: driver.lastname,
+    //   description: driver.description,
+    //   image: driver.image,
+    //   nationality: driver.nationality,
+    //   birthdate: driver.birthdate,
+    //   teams: driver.Teams.map((team) => team.name), 
+    // }));
+
+    const dbDataDrivers = dbData.map(
+      ({
+      id,
+      name,
+      lastname,
+      description,
+      image,
+      nationality,
+      birthdate,
+      Teams,
+        createDb,
+      }) => ({
+      id: id,
+      name: name,
+      lastname: lastname,
+      description: description,
+      image: image,
+      nationality: nationality,
+      birthdate: birthdate,
+      teams: Teams.map((team) => team.name),
+        createDb,
+      })
+    );
 
     const allData = [...dataDrivers, ...dbDataDrivers];
     return allData;

@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import Cards from "../../Components/Cards/Cards";
 import "./Home.css";
@@ -6,11 +5,11 @@ import { getDrivers, page } from "../../Redux/Actions/Actions";
 import Searchbar from "../../Components/Searchbar/Searchbar";
 import OrderDrivers from "../../Components/Order/OrderDrivers";
 import Filter from "../../Components/Filter/Filter";
+import { useEffect } from "react";
 
 const Home = () => {
-
   const dispatch = useDispatch();
-
+  
 
   const pagination = (e) => {
     dispatch(page(e.target.name));
@@ -27,7 +26,7 @@ const Home = () => {
         <Searchbar className="searchbar" />
         <Filter />
       </div>
-      <div>
+      <div>       
         <Cards />
       </div>
       <div className="pagination-container">
@@ -43,6 +42,7 @@ const Home = () => {
 };
 
 export default Home;
+
 
 
 

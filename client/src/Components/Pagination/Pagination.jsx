@@ -1,32 +1,31 @@
-// import "./Pagination.css";
+// // Pagination.jsx
 // import PropTypes from "prop-types";
+// import "./Pagination.css";
 
-// const Pagination = ({
-//   currentPage,
-//   driversPerPage,
-//   allDrivers,
-//   paginate,
-// }) => {
-//   const pages = [];
-//   const totalPages = Math.ceil(allDrivers.length / driversPerPage);
+// const Pagination = ({ currentPage, driversPerPage, allDrivers, paginate }) => {
+//   const totalPages = Math.ceil(allDrivers / driversPerPage);
 
+//   const pageNumbers = [];
 //   for (let i = 1; i <= totalPages; i++) {
-//     pages.push(i);
+//     pageNumbers.push(i);
 //   }
 
 //   return (
 //     <nav className="pagination-container">
-//       <div className="pagination-buttons">
-//         {pages.map((page) => (
-//           <button
-//             key={page}
-//             onClick={() => paginate(page)}
-//             className={currentPage === page ? "active" : ""}
-//           >
-//             {page}
-//           </button>
+//       <ul className="pagination-buttons">
+//         {pageNumbers.map((number) => (
+//           <li key={number} className="pagination-item">
+//             <button
+//               className={`pagination-button ${
+//                 currentPage === number ? "active" : ""
+//               }`}
+//               onClick={() => paginate(number)}
+//             >
+//               {number}
+//             </button>
+//           </li>
 //         ))}
-//       </div>
+//       </ul>
 //     </nav>
 //   );
 // };
@@ -34,9 +33,12 @@
 // Pagination.propTypes = {
 //   currentPage: PropTypes.number.isRequired,
 //   driversPerPage: PropTypes.number.isRequired,
-//   allDrivers: PropTypes.array.isRequired,
+//   allDrivers: PropTypes.number.isRequired,
 //   paginate: PropTypes.func.isRequired,
 // };
 
 // export default Pagination;
+
+
+
 
