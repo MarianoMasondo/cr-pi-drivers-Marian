@@ -22,12 +22,19 @@
 .nav-button {
     padding: 10px 15px;
     margin: 2px;
-    font-size: 1.2rem;
+    font-size: 1rem;
     background-color: transparent;
     border: 2px solid ;
     border-radius: 15px;
-    color: #fff;
+    color: whitesmoke;
     cursor: pointer;   
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    width: 100px; 
+}
+
+.nav-button:hover{
+    background-color: white;
+    color: red;
+    border-color: red;
 }
 

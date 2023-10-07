@@ -37,11 +37,12 @@ import { FILTER_ALL_TEAMS, FILTER_APIDB, FILTER_TEAMS, GET_DRIVERS, GET_DRIVER_D
     }
  }
  export const orderByDob = (payload) => {
-    return {
-        type: ORDER_BY_DOB,
-        payload,
+     return {
+         type: ORDER_BY_DOB,
+         payload,
+        }
     }
- }
+    
 
  export const allTeams = () => {
     return async(dispatch) => {

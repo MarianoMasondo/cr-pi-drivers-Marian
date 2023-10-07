@@ -22,16 +22,18 @@ const OrderDrivers = () => {
         }
         setAux(!aux);
     }
-
+    
     const handleBirthday = (e) => {
         e.preventDefault();
         if (e.target.value === "default") {
             dispatch(getDrivers());
         } else if (e.target.value === "asc") {
             dispatch(orderByDob("olders"));
+            
         } else if (e.target.value === "desc") {
             dispatch(orderByDob("youngers"));
         }
+       
         setAux(!aux);
     }
     

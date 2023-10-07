@@ -24,7 +24,8 @@
 
 .landing-button {
     padding: 10px 20px;
-    font-size: 1.2rem;
+    font-size: 1rem;
+    width: 100px;
     background-color: transparent;
     border: 2px solid #000;
     border-radius: 15px;
@@ -53,7 +54,7 @@
   }  
   
   button:hover {
-    background-color: rgb(85, 196, 202);;
+    background-color: rgb(85, 196, 202);
     color: #000;
     border-color: #000;
     animation: none; 
