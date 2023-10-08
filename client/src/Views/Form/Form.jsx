@@ -19,7 +19,7 @@ const validate = (form) => {
     errors.nationality = "Please insert a valid nationality!";
   }
   if (!form.image) {
-    errors.image = "Please insert a valid image!";
+    errors.image = "Please insert a valid URL image!";
   }
   if (!form.birthdate) {
     errors.birthdate = "Please insert a valid birthdate!";
@@ -134,8 +134,8 @@ const Form = () => {
       <Link to="/home">
         <button className="back-home">Home</button>
       </Link>
-        <h1>Create a driver</h1>
         <section>
+        <h1 className="h1-form">Create a driver</h1>
           <input
             className={`input-container ${errors.name ? "error" : ""}`}
             type="text"
@@ -143,8 +143,8 @@ const Form = () => {
             value={form.name}
             onChange={handleInputChange}
             placeholder="Name here..."
-          />
-          {errors.name && <p className="error-text">{errors.name}</p>}
+            />
+            {errors.name && <p className="error-text">{errors.name}</p>}
         </section>
         <section>
           <input
@@ -166,7 +166,7 @@ const Form = () => {
             onChange={handleInputChange}
             placeholder="Nationality here..."
           />
-          {errors.nationality && <p className="error-text">{errors.nationality}</p>}
+          {errors.nationality && <span className="error-text">{errors.nationality}</span>}
         </section>
 
         <section>
@@ -207,7 +207,7 @@ const Form = () => {
 
        
         <section>
-          <h3>Select teams</h3>
+          <h3 className="h3-form">Select teams</h3>
           <div className="teams-container-create">
             <select
               className={`${
@@ -215,6 +215,7 @@ const Form = () => {
               }`}
               name="teams"
               onChange={handleSelect}
+              
             >
               {teams.map((team) => (
                 <option key={team.id} value={team.name}>
