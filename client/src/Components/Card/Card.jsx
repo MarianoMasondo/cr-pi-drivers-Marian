@@ -20,11 +20,12 @@ const Card = ({ id, name, lastname, teams, image }) => {
 };
 
 Card.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   lastname: PropTypes.string.isRequired,
   teams: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
+
 };
 
 export default Card;

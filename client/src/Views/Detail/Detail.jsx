@@ -8,9 +8,10 @@ const Detail = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const driverDetail = useSelector((state) => state.driverDetail);
+  
 
   useEffect(() => {
-    dispatch(getDriverDetail(id));
+    dispatch(getDriverDetail(id));    
   }, [dispatch, id]);
 
   return (
@@ -34,28 +35,22 @@ const Detail = () => {
           <img src={driverDetail.image} className="img-container" alt="" />
           <div className="driver-fields">
             <div className="driver-field">
-              <p>ID:</p>
-              <p>{driverDetail.id}</p>
+              <p>ID: {driverDetail.id}</p>  
             </div>
             <div className="driver-field">
-              <p>Name:</p>
-              <p>{driverDetail.name}</p>
+              <p>Name: {driverDetail.name}</p>              
             </div>
             <div className="driver-field">
-              <p>Lastname: </p>
-              <p>{driverDetail.lastname}</p>
+              <p>Lastname: {driverDetail.lastname}</p>              
             </div>
             <div className="driver-field">
-              <p>Nationality:</p>
-              <p>{driverDetail.nationality}</p>
+              <p>Nationality: {driverDetail.nationality}</p>              
             </div>
             <div className="driver-field">
-              <p>Birthdate:</p>
-              <p>{driverDetail.birthdate}</p>
+              <p>Birthdate: {driverDetail.birthdate}</p>              
             </div>
             <div className="driver-field">
-              <p>Teams:</p>
-              <p>{driverDetail.teams}</p>
+              <p>Teams: {driverDetail.teams}</p>
             </div>
           </div>
         </div>
@@ -63,6 +58,7 @@ const Detail = () => {
             <p>Description: {driverDetail.description}</p>
           </div>
       </div>
+          
     </div>
   );
 };

@@ -9,6 +9,7 @@ import { useEffect } from "react";
 
 const Home = () => {
   const dispatch = useDispatch();
+
   
 
   const pagination = (e) => {
@@ -18,6 +19,8 @@ const Home = () => {
   useEffect(() => {
     dispatch(getDrivers());
   }, [dispatch]);
+
+  
 
   return (
     <div className="home-container">

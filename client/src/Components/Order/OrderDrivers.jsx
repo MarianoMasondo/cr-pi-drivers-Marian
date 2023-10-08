@@ -29,9 +29,12 @@ const OrderDrivers = () => {
             dispatch(getDrivers());
         } else if (e.target.value === "asc") {
             dispatch(orderByDob("olders"));
+      
+            
             
         } else if (e.target.value === "desc") {
             dispatch(orderByDob("youngers"));
+  
         }
        
         setAux(!aux);

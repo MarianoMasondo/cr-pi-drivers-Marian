@@ -10,14 +10,12 @@ import About from './Views/About/About';
 function App() {
   const location = useLocation();
 
-  // Verifica si la ubicación actual es la página de inicio (Landing)
-  const isLandingPage = location.pathname === '/';
+ const isLandingPage = location.pathname === '/';
 
   return (
     
       <div className='App'>
-        {/* Muestra la Navbar solo si no estamos en la página de inicio */}
-        {!isLandingPage && <Navbar />}
+                {!isLandingPage && <Navbar />}
         <Routes>
           <Route exact path={"/"} element={<Landing />} />
           <Route path={"/home"} element={<Home />} />

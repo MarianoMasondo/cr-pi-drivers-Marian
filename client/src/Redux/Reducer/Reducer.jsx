@@ -74,16 +74,15 @@ const Reducer = (state = initialState, action) => {
     }
   });
   return {
-    ...state,
-    
-    drivers: driverOrder,
+    ...state,   
+    drivers:[ ...driverOrder].splice(0, itemsPerPage),
     currentPage: 0,
   }
 
 case ORDER_BY_DOB:  
   driversDob = action.payload === "asc"
     ? [...state.drivers].sort((a, b) => (a.birthday - b.birthday))
-    : [...state.drivers].sort((a, b) => (b.birthday - a.birthday));
+    : [...state.drivers].sort((a, b) => (b.birthday - a.birthday));   
     
     return {
       ...state,
@@ -109,7 +108,8 @@ case ORDER_BY_DOB:
          );
          return {
           ...state,
-          drivers: driverTeams,
+          drivers:[ ...driverTeams].splice(0, itemsPerPage),
+          
           currentPage: 0,
         };
 
@@ -136,7 +136,7 @@ case ORDER_BY_DOB:
 
   driversCopy = state.driversCopy; 
 
-  if (action.payload === "next" && firstIndex >= driversCopy.length)
+  if (action.payload === "next" && firstIndex >= state.driversCopy.length)
     return state;
   else if (action.payload === "prev" && prev_page < 0) return state;
 

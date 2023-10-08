@@ -3,17 +3,19 @@ import axios from "axios";
 import { FILTER_ALL_TEAMS, FILTER_APIDB, FILTER_TEAMS, GET_DRIVERS, GET_DRIVER_DETAIL, ORDER_ASC_DESC, ORDER_BY_DOB, PAGINATE, SEARCH_DRIVER,
  } from "../ActionsTypes/ActionsTypes";
 
- export function getDrivers () {
+ export const getDrivers = () => {
     return async function (dispatch) {
-        const drivers = await axios.get(`http://localhost:3001/drivers`);
-      
-    dispatch({type: GET_DRIVERS, payload: drivers.data});
+        try{
+            const drivers = await axios.get(`http://localhost:3001/drivers`);      
+            dispatch({type: GET_DRIVERS, payload: drivers.data});
+        }catch(error){
+            alert(error.drivers.data.error)
+        }
     }
  }
 
- export function getDriverDetail(id){
-    return async function (dispatch){
-   
+ export const getDriverDetail = (id) =>{
+    return async function (dispatch){   
             const driverDetail = await axios.get(`http://localhost:3001/drivers/${id}`);
             dispatch({
                 type: GET_DRIVER_DETAIL,
@@ -37,12 +39,12 @@ import { FILTER_ALL_TEAMS, FILTER_APIDB, FILTER_TEAMS, GET_DRIVERS, GET_DRIVER_D
     }
  }
  export const orderByDob = (payload) => {
+    
      return {
          type: ORDER_BY_DOB,
          payload,
         }
-    }
-    
+    }    
 
  export const allTeams = () => {
     return async(dispatch) => {
@@ -72,7 +74,7 @@ import { FILTER_ALL_TEAMS, FILTER_APIDB, FILTER_TEAMS, GET_DRIVERS, GET_DRIVER_D
     }
  }
 
- export function page(order) {
+ export const page = (order) => {
     return function (dispatch) {
       dispatch({
         type: PAGINATE,
