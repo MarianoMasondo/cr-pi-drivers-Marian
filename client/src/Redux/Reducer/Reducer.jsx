@@ -33,10 +33,9 @@ const Reducer = (state = initialState, action) => {
     case GET_DRIVERS:
       return {
         ...state,
-        drivers: [...action.payload],
+        drivers: action.payload,
         driversCopy: action.payload 
       };
-
     case GET_DRIVER_DETAIL:
       return{
         ...state,
@@ -92,12 +91,9 @@ case ORDER_BY_DOB:
     ...state,
     drivers: [...driversDob],
   };
-
-
-
-    
+   
       
-        case FILTER_ALL_TEAMS:
+        case FILTER_ALL_TEAMS:         
           return{
             ...state,
             teams: action.payload,
@@ -114,7 +110,7 @@ case ORDER_BY_DOB:
          );
          return {
           ...state,
-          drivers:[ ...driverTeams]
+          drivers: driverTeams
         };
 
         case FILTER_APIDB:
@@ -126,8 +122,9 @@ case ORDER_BY_DOB:
           return {
               ...state,
               drivers: action.payload === "all" ? apiDbCopy : driversApiDb,
-             
-          }
+              
+            }
+            
     default:
       return state;
   }

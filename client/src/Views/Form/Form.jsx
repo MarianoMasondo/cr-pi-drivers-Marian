@@ -11,22 +11,32 @@ const validate = (form) => {
 
   if (!form.name) {
     errors.name = "Please insert a valid name!";
+  } else if (!/^[A-Za-z\s]+$/.test(form.name)) {
+    errors.name = "Name can only contain letters and spaces!";
   }
+
   if (!form.lastname) {
     errors.lastname = "Please insert a valid lastname!";
+  } else if (!/^[A-Za-z\s]+$/.test(form.name)) {
+    errors.name = "Name can only contain letters and spaces!";
   }
+
   if (!form.nationality) {
     errors.nationality = "Please insert a valid nationality!";
   }
+
   if (!form.image) {
     errors.image = "Please insert a valid URL image!";
   }
+
   if (!form.birthdate) {
     errors.birthdate = "Please insert a valid birthdate!";
   }
+
   if (!form.description) {
     errors.description = "Please insert a valid description!";
   }
+  
   if (!form.teams || form.teams.length === 0) {
     errors.teams = "Please select at least one team!";
   }

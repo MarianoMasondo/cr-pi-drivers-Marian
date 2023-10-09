@@ -8,11 +8,13 @@ const Detail = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const driverDetail = useSelector((state) => state.driverDetail);
+  console.log(driverDetail)
   
 
   useEffect(() => {
     dispatch(getDriverDetail(id));    
   }, [dispatch, id]);
+  
 
   return (
     <div className="detail-container">
@@ -47,7 +49,8 @@ const Detail = () => {
               <p>Nationality: {driverDetail.nationality}</p>              
             </div>
             <div className="driver-field">
-              <p>Birthdate: {driverDetail.birthdate}</p>              
+              <p>Birthdate: {driverDetail.birthdate}</p>  
+                          
             </div>
             <div className="driver-field">
               <p>Teams: {driverDetail.teams}</p>

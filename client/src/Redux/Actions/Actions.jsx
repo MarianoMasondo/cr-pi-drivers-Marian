@@ -4,13 +4,9 @@ import { FILTER_ALL_TEAMS, FILTER_APIDB, FILTER_TEAMS, GET_DRIVERS, GET_DRIVER_D
  } from "../ActionsTypes/ActionsTypes";
 
  export const getDrivers = () => {
-    return async function (dispatch) {
-        try{
+    return async function (dispatch) {       
             const drivers = await axios.get(`http://localhost:3001/drivers`);      
-            dispatch({type: GET_DRIVERS, payload: drivers.data});
-        }catch(error){
-            alert(error.drivers.data.error)
-        }
+            dispatch({type: GET_DRIVERS, payload: drivers.data});        
     }
  }
 
@@ -20,8 +16,7 @@ import { FILTER_ALL_TEAMS, FILTER_APIDB, FILTER_TEAMS, GET_DRIVERS, GET_DRIVER_D
             dispatch({
                 type: GET_DRIVER_DETAIL,
                 payload: driverDetail.data,
-            })
-      
+            })      
     }
  }
 
@@ -48,16 +43,12 @@ import { FILTER_ALL_TEAMS, FILTER_APIDB, FILTER_TEAMS, GET_DRIVERS, GET_DRIVER_D
 
  export const allTeams = () => {
     return async(dispatch) => {
-        try{
-            const apiData = await axios.get(`http://localhost:3001/teams`);
-            const teams = apiData.data;
+            const teams = await axios.get(`http://localhost:3001/teams`);           
             dispatch({
                 type: FILTER_ALL_TEAMS,
-                payload: teams,
+                payload: teams.data,
             })
-        } catch(error){
-            console.log(error.message)
-        }
+        
     }
  }
 

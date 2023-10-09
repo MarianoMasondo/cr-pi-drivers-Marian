@@ -25,14 +25,11 @@ const OrderDrivers = () => {
     
     const handleBirthday = (e) => {
         e.preventDefault();
-        console.log("Valor seleccionado:", e.target.value); // Verifica el valor seleccionado
         if (e.target.value === "default") {
           dispatch(getDrivers());
         } else if (e.target.value === "asc") {
-          console.log("Ordenando ascendente");
           dispatch(orderByDob("asc"));
         } else if (e.target.value === "desc") {
-          console.log("Ordenando descendente");
           dispatch(orderByDob("desc"));
         }
         setAux(!aux);

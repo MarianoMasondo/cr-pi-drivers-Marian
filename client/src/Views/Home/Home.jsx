@@ -10,11 +10,11 @@ import Pagination from "../../Components/Pagination/Pagination";
 
 const Home = () => {
   const dispatch = useDispatch();
-  let driversPerPage= 9;
+  // let driversPerPage= 9;
 
   const drivers = useSelector((state) => state.drivers);
   const [currentPage, setCurrentPage] = useState(1);
-  // const [driversPerPage] = useState(9);
+  const [driversPerPage] = useState(9);
   const indexOfLastDriver = currentPage * driversPerPage;
   const indexOfFirstDriver = indexOfLastDriver - driversPerPage;
   const currentDrivers = drivers.slice(
@@ -27,6 +27,7 @@ const Home = () => {
   };
 
   useEffect(() => {
+    console.log("Fetching drivers...")
     dispatch(getDrivers());
   }, [dispatch]);
 
