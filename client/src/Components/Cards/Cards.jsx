@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
-import Card from "../Card/Card";
+
 import "./Cards.css";
+import Card from "../card/Card";
 
 
 const Cards = () => {

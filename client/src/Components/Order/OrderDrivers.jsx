@@ -25,20 +25,20 @@ const OrderDrivers = () => {
     
     const handleBirthday = (e) => {
         e.preventDefault();
+        console.log("Valor seleccionado:", e.target.value); // Verifica el valor seleccionado
         if (e.target.value === "default") {
-            dispatch(getDrivers());
+          dispatch(getDrivers());
         } else if (e.target.value === "asc") {
-            dispatch(orderByDob("olders"));
-      
-            
-            
+          console.log("Ordenando ascendente");
+          dispatch(orderByDob("asc"));
         } else if (e.target.value === "desc") {
-            dispatch(orderByDob("youngers"));
-  
+          console.log("Ordenando descendente");
+          dispatch(orderByDob("desc"));
         }
-       
         setAux(!aux);
-    }
+      };
+      
+      
     
     return (
         <div className="order-container">
@@ -50,11 +50,12 @@ const OrderDrivers = () => {
                 </select>
             </div>
             <div className="order-dob">
-                <select onChange={(e) => handleBirthday(e)}>
-                    <option value="default">Order by birthday</option>
-                    <option value="asc">Youngers</option>
-                    <option value="desc">Olders</option>
-                </select>
+            <select onChange={(e) => handleBirthday(e)}>
+  <option value="default">Order by birthday</option>
+  <option value="asc">Youngest</option>
+  <option value="desc">Oldest</option>
+</select>
+
             </div>
         </div>
     )

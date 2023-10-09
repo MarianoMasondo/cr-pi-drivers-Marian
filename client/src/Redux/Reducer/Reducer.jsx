@@ -2,7 +2,7 @@ import {
   FILTER_ALL_TEAMS,
   FILTER_APIDB,
   FILTER_TEAMS,
-  GET_DRIVERS, GET_DRIVER_DETAIL, ORDER_ASC_DESC, ORDER_BY_DOB, PAGINATE, SEARCH_DRIVER
+  GET_DRIVERS, GET_DRIVER_DETAIL, ORDER_ASC_DESC, ORDER_BY_DOB, SEARCH_DRIVER
 } from "../ActionsTypes/ActionsTypes";
 
 const removeAccents = (str) => {
@@ -19,7 +19,7 @@ let initialState = {
   searchDriver:[],
   teams: [],
   driversApiDb: [],
-  currentPage: 0,
+  
   
 }
 
@@ -30,14 +30,13 @@ const Reducer = (state = initialState, action) => {
   let driverTeams;
   let driversApiDb;
   let apiDbCopy;
-  let itemsPerPage = 9;
-  let next_page, prev_page, firstIndex;
+  
 
   switch(action.type) {
     case GET_DRIVERS:
       return {
         ...state,
-        drivers: [...action.payload].splice(0, itemsPerPage),
+        drivers: [...action.payload],
         driversCopy: action.payload 
       };
 
@@ -75,20 +74,30 @@ const Reducer = (state = initialState, action) => {
   });
   return {
     ...state,   
-    drivers:[ ...driverOrder].splice(0, itemsPerPage),
-    currentPage: 0,
+    drivers:[ ...driverOrder]
   }
 
-case ORDER_BY_DOB:  
-  driversDob = action.payload === "asc"
-    ? [...state.drivers].sort((a, b) => (a.birthday - b.birthday))
-    : [...state.drivers].sort((a, b) => (b.birthday - a.birthday));   
-    
-    return {
-      ...state,
-      drivers: driversDob,
-      currentPage: 0,
+case ORDER_BY_DOB:
+  driversDob = [...state.driversCopy];
+  driversDob.sort((a, b) => {
+    const dateA = new Date(a.birthdate);
+    const dateB = new Date(b.birthdate);
+
+    if (action.payload === "desc") {
+      return dateA - dateB;
+    } else if (action.payload === "asc") {
+      return dateB - dateA;
     }
+    return 0;
+  });
+
+  return {
+    ...state,
+    drivers: [...driversDob],
+  };
+
+
+
     
       
         case FILTER_ALL_TEAMS:
@@ -108,9 +117,7 @@ case ORDER_BY_DOB:
          );
          return {
           ...state,
-          drivers:[ ...driverTeams].splice(0, itemsPerPage),
-          
-          currentPage: 0,
+          drivers:[ ...driverTeams]
         };
 
         case FILTER_APIDB:
@@ -122,33 +129,8 @@ case ORDER_BY_DOB:
           return {
               ...state,
               drivers: action.payload === "all" ? apiDbCopy : driversApiDb,
-              currentPage: 0,
+             
           }
-
-
-          case PAGINATE:
-  next_page = state.currentPage + 1;
-  prev_page = state.currentPage - 1;
-  firstIndex =
-    action.payload === "next"
-      ? next_page * itemsPerPage
-      : prev_page * itemsPerPage;
-
-  driversCopy = state.driversCopy; 
-
-  if (action.payload === "next" && firstIndex >= state.driversCopy.length)
-    return state;
-  else if (action.payload === "prev" && prev_page < 0) return state;
-
-  return {
-    ...state,
-    drivers: [...driversCopy].slice( 
-      firstIndex,
-      firstIndex + itemsPerPage
-    ),
-    currentPage: action.payload === "next" ? next_page : prev_page,
-  };
-
     default:
       return state;
   }

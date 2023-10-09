@@ -1,50 +1,78 @@
-import { useDispatch } from "react-redux";
-import Cards from "../../Components/Cards/Cards";
-import "./Home.css";
-import { getDrivers, page } from "../../Redux/Actions/Actions";
-import Searchbar from "../../Components/Searchbar/Searchbar";
-import OrderDrivers from "../../Components/Order/OrderDrivers";
-import Filter from "../../Components/Filter/Filter";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import "./Home.css"
+import { useDispatch, useSelector } from "react-redux";
 
-const Home = () => {
+import TypeFilter from "../../components/filter/Filter";
+import Pagination from "../../Components/Pagination/Pagination";
+import { getDrivers } from "../../Redux/Actions/Actions";
+import OrderDrivers from "../../Components/Order/OrderDrivers";
+import Cards from "../../Components/Cards/Cards";
+
+const HomePage = () => {
   const dispatch = useDispatch();
 
-  
+  const drivers = useSelector((state) => state.drivers);
+  console.log(drivers)
+  const [currentPage, setCurrentPage] = useState(1);
+const [driversPerPage] = useState(9); 
+console.log(driversPerPage)
 
-  const pagination = (e) => {
-    dispatch(page(e.target.name));
-  };
+const indexOfLastDriver = currentPage * driversPerPage;
+const indexOfFirstDriver = indexOfLastDriver - driversPerPage;
+const currentDrivers = drivers.slice(
+  indexOfFirstDriver,
+  indexOfLastDriver
+);
+
+const paginate = (pageNumber) => {
+  setCurrentPage(pageNumber);
+};
+
 
   useEffect(() => {
     dispatch(getDrivers());
   }, [dispatch]);
 
-  
-
   return (
     <div className="home-container">
       <div className="filter-container">
-        <OrderDrivers className="order-drivers" />
-        <Searchbar className="searchbar" />
-        <Filter />
+        <OrderDrivers />
+        <TypeFilter />
       </div>
-      <div>       
-        <Cards />
+      <div
+        className={`${"pagination-container-cards"} ${"card-Container"}`}
+      >
+        {currentDrivers?.map((driver) => {
+          return (
+            <Cards
+            key={driver.id}
+            id={driver.id} 
+            name={driver.name}
+            lastname={driver.lastname}
+            nationality={driver.nationality}
+            image={driver.image}
+            description={driver.description}
+            birthdate={driver.birthdate}
+            teams={String(driver.teams)} 
+            createDb={driver.createDb}
+            />
+          );
+        })}
       </div>
       <div className="pagination-container">
-        <button className="pagButtons" name="prev" onClick={pagination}>
-          prev
-        </button>
-        <button className="pagButtons" name="next" onClick={pagination}>
-          next
-        </button>
+      <Pagination
+  currentPage={currentPage}
+  driversPerPage={driversPerPage}
+  drivers={drivers} 
+  paginate={paginate}
+/>
+
       </div>
     </div>
   );
 };
 
-export default Home;
+export default HomePage;
 
 
 

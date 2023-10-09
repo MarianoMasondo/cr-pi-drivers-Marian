@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { FILTER_ALL_TEAMS, FILTER_APIDB, FILTER_TEAMS, GET_DRIVERS, GET_DRIVER_DETAIL, ORDER_ASC_DESC, ORDER_BY_DOB, PAGINATE, SEARCH_DRIVER,
+import { FILTER_ALL_TEAMS, FILTER_APIDB, FILTER_TEAMS, GET_DRIVERS, GET_DRIVER_DETAIL, ORDER_ASC_DESC, ORDER_BY_DOB, SEARCH_DRIVER,
  } from "../ActionsTypes/ActionsTypes";
 
  export const getDrivers = () => {
@@ -39,12 +39,12 @@ import { FILTER_ALL_TEAMS, FILTER_APIDB, FILTER_TEAMS, GET_DRIVERS, GET_DRIVER_D
     }
  }
  export const orderByDob = (payload) => {
-    
-     return {
-         type: ORDER_BY_DOB,
-         payload,
-        }
-    }    
+    return {
+      type: ORDER_BY_DOB,
+      payload,
+    };
+  };
+  
 
  export const allTeams = () => {
     return async(dispatch) => {
@@ -73,12 +73,3 @@ import { FILTER_ALL_TEAMS, FILTER_APIDB, FILTER_TEAMS, GET_DRIVERS, GET_DRIVER_D
         payload,
     }
  }
-
- export const page = (order) => {
-    return function (dispatch) {
-      dispatch({
-        type: PAGINATE,
-        payload: order,
-      });
-    };
-  }
