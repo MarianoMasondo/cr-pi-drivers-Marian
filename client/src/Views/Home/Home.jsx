@@ -1,33 +1,30 @@
-import { useEffect, useState } from "react";
-import "./Home.css"
 import { useDispatch, useSelector } from "react-redux";
-
-import TypeFilter from "../../components/filter/Filter";
-import Pagination from "../../Components/Pagination/Pagination";
-import { getDrivers } from "../../Redux/Actions/Actions";
-import OrderDrivers from "../../Components/Order/OrderDrivers";
 import Cards from "../../Components/Cards/Cards";
+import "./Home.css";
+import { getDrivers } from "../../Redux/Actions/Actions";
+import Searchbar from "../../Components/Searchbar/Searchbar";
+import OrderDrivers from "../../Components/Order/OrderDrivers";
+import Filter from "../../Components/Filter/Filter";
+import { useEffect, useState } from "react";
+import Pagination from "../../Components/Pagination/Pagination";
 
-const HomePage = () => {
+const Home = () => {
   const dispatch = useDispatch();
+  let driversPerPage= 9;
 
   const drivers = useSelector((state) => state.drivers);
-  console.log(drivers)
   const [currentPage, setCurrentPage] = useState(1);
-const [driversPerPage] = useState(9); 
-console.log(driversPerPage)
+  // const [driversPerPage] = useState(9);
+  const indexOfLastDriver = currentPage * driversPerPage;
+  const indexOfFirstDriver = indexOfLastDriver - driversPerPage;
+  const currentDrivers = drivers.slice(
+    indexOfFirstDriver,
+    indexOfLastDriver
+  );
 
-const indexOfLastDriver = currentPage * driversPerPage;
-const indexOfFirstDriver = indexOfLastDriver - driversPerPage;
-const currentDrivers = drivers.slice(
-  indexOfFirstDriver,
-  indexOfLastDriver
-);
-
-const paginate = (pageNumber) => {
-  setCurrentPage(pageNumber);
-};
-
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
 
   useEffect(() => {
     dispatch(getDrivers());
@@ -36,17 +33,18 @@ const paginate = (pageNumber) => {
   return (
     <div className="home-container">
       <div className="filter-container">
-        <OrderDrivers />
-        <TypeFilter />
+        <OrderDrivers className="order-drivers" />
+        <Searchbar className="searchbar" />
+        <Filter />
       </div>
       <div
-        className={`${"pagination-container-cards"} ${"card-Container"}`}
+        className={`${"pagination-containerCards"} ${"card-Container"}`}
       >
-        {currentDrivers?.map((driver) => {
+        {currentDrivers.map((driver) => {
           return (
             <Cards
             key={driver.id}
-            id={driver.id} 
+            id={String(driver.id)}
             name={driver.name}
             lastname={driver.lastname}
             nationality={driver.nationality}
@@ -60,19 +58,19 @@ const paginate = (pageNumber) => {
         })}
       </div>
       <div className="pagination-container">
-      <Pagination
-  currentPage={currentPage}
-  driversPerPage={driversPerPage}
-  drivers={drivers} 
-  paginate={paginate}
-/>
-
+        <Pagination
+          currentPage={currentPage}
+          driversPerPage={driversPerPage}
+          drivers={drivers}
+          paginate={paginate}
+        />
       </div>
     </div>
+    
   );
 };
 
-export default HomePage;
+export default Home;
 
 
 

@@ -11,7 +11,7 @@ const Cards = () => {
       {drivers.map((driver) => (
         <Card
           key={driver.id}
-          id={driver.id} 
+          id={String(driver.id)}
           name={driver.name}
           lastname={driver.lastname}
           nationality={driver.nationality}

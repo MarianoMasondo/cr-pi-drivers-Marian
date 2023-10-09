@@ -31,13 +31,12 @@ const Pagination = ({
     );
   };
 
-  Pagination.propTypes = {
-    currentPage: PropTypes.number.isRequired,
-    driversPerPage: PropTypes.number.isRequired,
-    drivers: PropTypes.array.isRequired, 
-    paginate: PropTypes.func.isRequired,
-  };
-  
+Pagination.propTypes = {
+  currentPage: PropTypes.number.isRequired,
+  driversPerPage: PropTypes.number.isRequired,
+  drivers: PropTypes.array.isRequired, 
+  paginate: PropTypes.func.isRequired,
+};
 
 export default Pagination;
 

@@ -18,9 +18,7 @@ let initialState = {
   driverDetail: [],
   searchDriver:[],
   teams: [],
-  driversApiDb: [],
-  
-  
+  driversApiDb: [],  
 }
 
 const Reducer = (state = initialState, action) => {  
@@ -29,8 +27,7 @@ const Reducer = (state = initialState, action) => {
   let driversCopy;
   let driverTeams;
   let driversApiDb;
-  let apiDbCopy;
-  
+  let apiDbCopy;  
 
   switch(action.type) {
     case GET_DRIVERS:

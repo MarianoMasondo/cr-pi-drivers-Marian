@@ -60,6 +60,7 @@ const Detail = () => {
       </div>
           
     </div>
+
   );
 };
 
