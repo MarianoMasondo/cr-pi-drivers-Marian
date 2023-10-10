@@ -10,7 +10,10 @@ const OrderDrivers = () => {
     
 
     useEffect(() =>{
+        console.log("OrderDrivers se ha montado en Home");
         dispatch(getDrivers());
+        return () => {
+            console.log("OrderDrivers se ha desmontado de Home");}
     }, [dispatch]);
 
     const handleOrder = (e) => {

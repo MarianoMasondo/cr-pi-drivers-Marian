@@ -4,8 +4,8 @@ import "./Filter.css";
 import { allTeams, filterApiDb, filterTeams, getDrivers } from "../../Redux/Actions/Actions";
 
 const Filter = () => {
-    const [selectedTeam, setSelectedTeam] = useState(""); 
     const dispatch = useDispatch();
+    const [selectedTeam, setSelectedTeam] = useState("");
     const teams = useSelector((state) => state.teams);
 
     useEffect(() => {
@@ -29,20 +29,20 @@ const Filter = () => {
             dispatch(filterApiDb("all"));
         } else if (selectedValue === "api") {
             dispatch(filterApiDb("api"));
-        } else if (selectedValue === "database") {            
+        } else if (selectedValue === "database") {
             dispatch(filterApiDb("database"));
         }
     }
-    
+
     return (
         <div className="filter-container">
             <div>
                 <select onChange={(e) => handleFilter(e)} value={selectedTeam}>
                     <option value="all">Filter by Team...</option>
-                    {teams?.map((team) => ( 
-                    <option key={team.id} value={team.name}>
-                        {team.name}
-                    </option>
+                    {teams?.map((team) => (
+                        <option key={team.id} value={team.name}>
+                            {team.name}
+                        </option>
                     ))}
                 </select>
             </div>
@@ -66,6 +66,7 @@ const Filter = () => {
                         onChange={handleSourceFilter}
                     />
                     Database
+                </label>
                 <label>
                     <input
                         type="radio"
@@ -75,13 +76,13 @@ const Filter = () => {
                     />
                     All
                 </label>
-                </label>
             </div>
         </div>
     )
 }
 
 export default Filter;
+
 
 
 

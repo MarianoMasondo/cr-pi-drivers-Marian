@@ -33,17 +33,6 @@ const allDrivers = async () => {
       ],
     });
 
-    // const dbDataDrivers = dbdata.map((driver) => ({
-    //   id: driver.id,
-    //   name: driver.name,
-    //   lastname: driver.lastname,
-    //   description: driver.description,
-    //   image: driver.image,
-    //   nationality: driver.nationality,
-    //   birthdate: driver.birthdate,
-    //   teams: driver.Teams.map((team) => team.name), 
-    // }));
-
     const dbDataDrivers = dbData.map(
       ({
       id,

@@ -1,10 +1,11 @@
 import axios from "axios";
 
-import { FILTER_ALL_TEAMS, FILTER_APIDB, FILTER_TEAMS, GET_DRIVERS, GET_DRIVER_DETAIL, ORDER_ASC_DESC, ORDER_BY_DOB, SEARCH_DRIVER,
+import { FILTER_ALL_TEAMS, FILTER_APIDB, FILTER_TEAMS, GET_DRIVERS, GET_DRIVER_DETAIL, ORDER_ASC_DESC, ORDER_BY_DOB, PAGINATE, SEARCH_DRIVER,
  } from "../ActionsTypes/ActionsTypes";
 
  export const getDrivers = () => {
-    return async function (dispatch) {       
+    return async function (dispatch) {     
+        console.log("GET_DRIVERS action dispatched");  
             const drivers = await axios.get(`http://localhost:3001/drivers`);      
             dispatch({type: GET_DRIVERS, payload: drivers.data});        
     }
@@ -64,3 +65,12 @@ import { FILTER_ALL_TEAMS, FILTER_APIDB, FILTER_TEAMS, GET_DRIVERS, GET_DRIVER_D
         payload,
     }
  }
+
+ export const paginateDrivers = (order) => {
+   return async (dispatch) => {
+      dispatch({
+         type: PAGINATE,
+         payload: order
+      });
+   };
+};

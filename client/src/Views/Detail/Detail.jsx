@@ -4,17 +4,16 @@ import { Link, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { getDriverDetail } from "../../Redux/Actions/Actions";
 
+
 const Detail = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const driverDetail = useSelector((state) => state.driverDetail);
-  console.log(driverDetail)
-  
+  console.log(driverDetail)  
 
   useEffect(() => {
     dispatch(getDriverDetail(id));    
-  }, [dispatch, id]);
-  
+  }, [dispatch, id]);  
 
   return (
     <div className="detail-container">
@@ -49,19 +48,17 @@ const Detail = () => {
               <p>Nationality: {driverDetail.nationality}</p>              
             </div>
             <div className="driver-field">
-              <p>Birthdate: {driverDetail.birthdate}</p>  
-                          
+              <p>Birthdate: {driverDetail.birthdate}</p>                            
             </div>
             <div className="driver-field">
-              <p>Teams: {driverDetail.teams}</p>
+              {Array.isArray(driverDetail.Teams) ? driverDetail.Teams.map(team => team.name).join(', ') : driverDetail.teams }
             </div>
           </div>
         </div>
           <div className="driver-description">
             <p>Description: {driverDetail.description}</p>
           </div>
-      </div>
-          
+      </div>          
     </div>
 
   );
