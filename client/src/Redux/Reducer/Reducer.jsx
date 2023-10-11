@@ -29,6 +29,7 @@ const Reducer = (state = initialState, action) => {
   let driverTeams;
   let driversApiDb;
   let apiDbCopy;
+  let drivers;
   let prev_page, next_page, firstIndex;
   let driversPerPage = 9;  
 
@@ -108,36 +109,33 @@ case ORDER_BY_DOB:
             teams: action.payload,
           }
 
-         case FILTER_TEAMS: 
-         driversCopy = [...state.driversCopy] ;
-         driverTeams =
-         action.payload === "all"
-         ? driversCopy
-         : driversCopy.filter(
-          (driver) => 
-          driver.teams && driver.teams.includes(action.payload)
-         );
-         return {
-          ...state,
-          drivers: [...driverTeams].splice(0, driversPerPage),
-          driversCopy: driverTeams,
-          currentPage: 0,          
-        };
+          case FILTER_TEAMS:
+            drivers = [...state.driversCopy];
+            driverTeams = action.payload === "all"
+              ? drivers
+              : drivers.filter((driver) => driver.teams && driver.teams.includes(action.payload));
+            return {
+              ...state,
+              drivers: [...driverTeams],
+             
+              currentPage: 0,
+            };
+          
 
         case FILTER_APIDB:
-          apiDbCopy = state.driversCopy;
-          console.log(apiDbCopy)
+          apiDbCopy = [...state.driversCopy];      
           driversApiDb = 
           action.payload === "database" 
             ? apiDbCopy.filter((driver) => driver.createDb)
-            : apiDbCopy.filter((driver) => !driver.createDb)
-            console.log(driversApiDb)
-           
-          return {
+            : apiDbCopy.filter((driver) => !driver.createDb)            
+            
+            return {
               ...state,
-              drivers: action.payload === "all" ? [...apiDbCopy].splice(0, driversPerPage) : [...driversApiDb].splice(0, driversPerPage),
+              drivers: action.payload === "all" ? apiDbCopy : driversApiDb, 
+            
               currentPage: 0,
             }
+        
 
             case PAGINATE:
               next_page = state.currentPage + 1;
