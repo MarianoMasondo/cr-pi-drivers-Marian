@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import "./Cards.css";
 import Card from "../card/Card";
 
-
 const Cards = () => {
   const drivers = useSelector((state) => state.drivers);
   return (
@@ -18,7 +17,7 @@ const Cards = () => {
           image={driver.image}
           description={driver.description}
           birthdate={driver.birthdate}
-          teams={String(driver.teams)} 
+          teams={String(driver.teams)}
           createDb={driver.createDb}
         />
       ))}

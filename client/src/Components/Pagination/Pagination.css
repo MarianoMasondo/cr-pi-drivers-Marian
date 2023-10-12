@@ -1,5 +1,5 @@
 .pagination-container {
-  margin: 14px;
+  margin: 4px;
 }
 
 .pagination-buttons {
@@ -9,20 +9,20 @@
 
 .pagination-buttons button {
   margin: 5px; 
-  padding: 10px 15px;
+  padding: 10px;
   border-radius: 10%;
   cursor: pointer;
   color: white;
   background-color: red;
   border: 1px solid white;
-  flex: 1; 
-  max-width: calc(20% - 10px); 
+  width: 50px; 
   text-align: center;
 }
 
 .pagination-buttons button:hover {
-  background-color: rgba(227, 70, 70, 0.768);
-  color: #f4f2de;
+  background-color: rgba(255, 0, 0, 0.308);
+  color: whitesmoke;
+  border-color: grey;
 }
 
 .pagination-buttons button:active {
@@ -30,10 +30,11 @@
 }
 
 .pagination-buttons button.active {
-  background-color: red;
-  color: #f4f2de;
+  background-color: rgba(255, 0, 0, 0.308);
+  color: whitesmoke;
+  border-color: grey;
 }
 
-.direction-buttons{
+.direction-buttons {
   text-align: center;
 }

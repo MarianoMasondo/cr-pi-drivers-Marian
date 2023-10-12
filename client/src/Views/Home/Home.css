@@ -15,7 +15,25 @@
   align-items: center;
   justify-content: space-around; 
   width: 90%; 
-  margin: 10 px 15px0 15px 0px; ; 
+  margin: 10 px 10px 10px 0px; ; 
   padding: 5px; 
 }
+
+.pagination-containerCards{  
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: row;
+    border-radius: 15px;
+    flex-wrap: wrap;
+    gap: 2em;
+    backdrop-filter: blur(0);
+    background-color: rgba(255, 232, 214, 0.5);
+    width: 90%;
+    margin: 5px auto 0;
+    padding: 25px;
+  }
+  
+
 

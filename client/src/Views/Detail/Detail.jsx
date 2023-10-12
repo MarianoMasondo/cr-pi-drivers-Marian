@@ -4,24 +4,22 @@ import { Link, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { getDriverDetail } from "../../Redux/Actions/Actions";
 
-
 const Detail = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const driverDetail = useSelector((state) => state.driverDetail);
-  console.log(driverDetail)  
+  console.log(driverDetail);
 
   useEffect(() => {
-    dispatch(getDriverDetail(id));    
-  }, [dispatch, id]);  
+    dispatch(getDriverDetail(id));
+  }, [dispatch, id]);
 
   return (
     <div className="detail-container">
-      
       <div className="driver-card">
-      <Link to="/home">
-        <button className="back-home">Home</button>
-      </Link>
+        <Link to="/home">
+          <button className="back-home">Home</button>
+        </Link>
         <div className="info-left">
           <div className="logo-container">
             <img
@@ -36,40 +34,33 @@ const Detail = () => {
           <img src={driverDetail.image} className="img-container" alt="" />
           <div className="driver-fields">
             <div className="driver-field">
-              <p>ID: {driverDetail.id}</p>  
+              <p>ID: {driverDetail.id}</p>
             </div>
             <div className="driver-field">
-              <p>Name: {driverDetail.name}</p>              
+              <p>Name: {driverDetail.name}</p>
             </div>
             <div className="driver-field">
-              <p>Lastname: {driverDetail.lastname}</p>              
+              <p>Lastname: {driverDetail.lastname}</p>
             </div>
             <div className="driver-field">
-              <p>Nationality: {driverDetail.nationality}</p>              
+              <p>Nationality: {driverDetail.nationality}</p>
             </div>
             <div className="driver-field">
-              <p>Birthdate: {driverDetail.birthdate}</p>                            
+              <p>Birthdate: {driverDetail.birthdate}</p>
             </div>
             <div className="driver-field">
-              {Array.isArray(driverDetail.Teams) ? driverDetail.Teams.map(team => team.name).join(', ') : driverDetail.teams }
+              {Array.isArray(driverDetail.Teams)
+                ? driverDetail.Teams.map((team) => team.name).join(", ")
+                : driverDetail.teams}
             </div>
           </div>
         </div>
-          <div className="driver-description">
-            <p>Description: {driverDetail.description}</p>
-          </div>
-      </div>          
+        <div className="driver-description">
+          <p>Description: {driverDetail.description}</p>
+        </div>
+      </div>
     </div>
-
   );
 };
 
 export default Detail;
-
-
-
-
-
-
-
-

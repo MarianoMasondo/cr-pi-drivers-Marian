@@ -2,9 +2,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { allTeams } from "../../Redux/Actions/Actions";
-import "./Form.css"
+import "./Form.css";
 import { Link } from "react-router-dom";
-
 
 const validate = (form) => {
   let errors = {};
@@ -36,7 +35,7 @@ const validate = (form) => {
   if (!form.description) {
     errors.description = "Please insert a valid description!";
   }
-  
+
   if (!form.teams || form.teams.length === 0) {
     errors.teams = "Please select at least one team!";
   }
@@ -141,11 +140,11 @@ const Form = () => {
   return (
     <div className="form-container">
       <form onSubmit={handleSubmit} className="form-card">
-      <Link to="/home">
-        <button className="back-home">Home</button>
-      </Link>
+        <Link to="/home">
+          <button className="back-home">Home</button>
+        </Link>
         <section>
-        <h1 className="h1-form">Create a driver</h1>
+          <h1 className="h1-form">Create a driver</h1>
           <input
             className={`input-container ${errors.name ? "error" : ""}`}
             type="text"
@@ -153,8 +152,8 @@ const Form = () => {
             value={form.name}
             onChange={handleInputChange}
             placeholder="Name here..."
-            />
-            {errors.name && <p className="error-text">{errors.name}</p>}
+          />
+          {errors.name && <p className="error-text">{errors.name}</p>}
         </section>
         <section>
           <input
@@ -176,56 +175,56 @@ const Form = () => {
             onChange={handleInputChange}
             placeholder="Nationality here..."
           />
-          {errors.nationality && <span className="error-text">{errors.nationality}</span>}
+          {errors.nationality && (
+            <span className="error-text">{errors.nationality}</span>
+          )}
         </section>
 
         <section>
-  <input
-    className={`input-container ${errors.image ? "error" : ""}`}
-    type="text"
-    name="image"
-    value={form.image}
-    onChange={handleInputChange}
-    placeholder="Image here..."
-  />
-  {errors.image && <p className="error-text">{errors.image}</p>}
-</section>
+          <input
+            className={`input-container ${errors.image ? "error" : ""}`}
+            type="text"
+            name="image"
+            value={form.image}
+            onChange={handleInputChange}
+            placeholder="Image here..."
+          />
+          {errors.image && <p className="error-text">{errors.image}</p>}
+        </section>
 
-<section>
-  <input
-    className={`input-container ${errors.birthdate ? "error" : ""}`}
-    type="date"
-    name="birthdate"
-    value={form.birthdate}
-    onChange={handleInputChange}
-    placeholder="Birthdate here..."
-  />
-  {errors.birthdate && <p className="error-text">{errors.birthdate}</p>}
-</section>
+        <section>
+          <input
+            className={`input-container ${errors.birthdate ? "error" : ""}`}
+            type="date"
+            name="birthdate"
+            value={form.birthdate}
+            onChange={handleInputChange}
+            placeholder="Birthdate here..."
+          />
+          {errors.birthdate && <p className="error-text">{errors.birthdate}</p>}
+        </section>
 
-<section>
-  <input
-    className={`input-container ${errors.description ? "error" : ""}`}
-    type="text"
-    name="description"
-    value={form.description}
-    onChange={handleInputChange}
-    placeholder="Description here..."
-  />
-  {errors.description && <p className="error-text">{errors.description}</p>}
-</section>
+        <section>
+          <input
+            className={`input-container ${errors.description ? "error" : ""}`}
+            type="text"
+            name="description"
+            value={form.description}
+            onChange={handleInputChange}
+            placeholder="Description here..."
+          />
+          {errors.description && (
+            <p className="error-text">{errors.description}</p>
+          )}
+        </section>
 
-       
         <section>
           <h3 className="h3-form">Select teams</h3>
           <div className="teams-container-create">
             <select
-              className={`${
-                errors.teams ? "error" : ""
-              }`}
+              className={`${errors.teams ? "error" : ""}`}
               name="teams"
               onChange={handleSelect}
-              
             >
               {teams.map((team) => (
                 <option key={team.id} value={team.name}>
@@ -239,7 +238,10 @@ const Form = () => {
             {form.teams?.map((team) => (
               <span className="team-span" key={team}>
                 {team}
-                <button className="delete-btn" onClick={() => handleDelete(team)}>
+                <button
+                  className="delete-btn"
+                  onClick={() => handleDelete(team)}
+                >
                   x
                 </button>
               </span>

@@ -2,7 +2,11 @@ import {
   FILTER_ALL_TEAMS,
   FILTER_APIDB,
   FILTER_TEAMS,
-  GET_DRIVERS, GET_DRIVER_DETAIL, ORDER_ASC_DESC, ORDER_BY_DOB, PAGINATE, SEARCH_DRIVER
+  GET_DRIVERS,
+  GET_DRIVER_DETAIL,
+  ORDER_ASC_DESC,
+  ORDER_BY_DOB,
+  SEARCH_DRIVER,
 } from "../ActionsTypes/ActionsTypes";
 
 const removeAccents = (str) => {
@@ -16,13 +20,15 @@ let initialState = {
   drivers: [],
   driversCopy: [],
   driverDetail: [],
-  searchDriver:[],
+  searchDriver: [],
   teams: [],
-  driversApiDb: [],  
+  driversApiDb: [],
+  driversFiltered: [],
+  filters: false,
   currentPage: 0,
-}
+};
 
-const Reducer = (state = initialState, action) => {  
+const Reducer = (state = initialState, action) => {
   let driverOrder;
   let driversDob;
   let driversCopy;
@@ -30,131 +36,111 @@ const Reducer = (state = initialState, action) => {
   let driversApiDb;
   let apiDbCopy;
   let drivers;
-  let prev_page, next_page, firstIndex;
-  let driversPerPage = 9;  
 
-
-
-  switch(action.type) {
-
+  switch (action.type) {
     case GET_DRIVERS:
       return {
         ...state,
-        drivers: [...action.payload].splice(0, driversPerPage),
-        driversCopy: action.payload 
+        drivers: [...action.payload],
+        driversCopy: action.payload,
       };
 
     case GET_DRIVER_DETAIL:
-      return{
+      return {
         ...state,
         driverDetail: action.payload,
       };
 
-      case SEARCH_DRIVER: {
-        const normalizedSearchValue = action.payload
-          .normalize("NFD")
-          .replace(/[\u0300-\u036f]/g, "")
-          .toLowerCase();
-      
-        driversCopy = [...state.driversCopy];
-        return {
-          ...state,
-          drivers: driversCopy.filter((driver) =>
-            removeAccents(driver.name).toLowerCase().includes(normalizedSearchValue)
-          ),
-        };
-      }
-      
+    case SEARCH_DRIVER: {
+      const normalizedSearchValue = action.payload
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase();
+
+      driversCopy = [...state.driversCopy];
+      return {
+        ...state,
+        drivers: [...driversCopy].filter((driver) =>
+          removeAccents(driver.name)
+            .toLowerCase()
+            .includes(normalizedSearchValue)
+        ),
+      };
+    }
 
     case ORDER_ASC_DESC:
-  driverOrder = [...state.driversCopy];
-  
-  driverOrder.sort((a, b) => {
-    if (action.payload === "asc") {
-      return a.name.localeCompare(b.name);
-    } else {
-      return b.name.localeCompare(a.name);
-    }
-  });
-  return {
-    ...state,   
-    drivers:[ ...driverOrder].splice(0, driversPerPage),
-    driversCopy: driverOrder,
-    currentPage: 0,
-  }
+      driverOrder = [...state.driversCopy];
 
-case ORDER_BY_DOB:
-  driversDob = [...state.driversCopy];
-  driversDob.sort((a, b) => {
-    const dateA = new Date(a.birthdate);
-    const dateB = new Date(b.birthdate);
+      driverOrder.sort((a, b) => {
+        if (action.payload === "asc") {
+          return a.name.localeCompare(b.name);
+        } else {
+          return b.name.localeCompare(a.name);
+        }
+      });
+      return {
+        ...state,
+        drivers: driverOrder,
+        driversCopy: driverOrder,
+      };
 
-    if (action.payload === "desc") {
-      return dateA - dateB;
-    } else if (action.payload === "asc") {
-      return dateB - dateA;
-    }
-    return 0;
-  });
-  return {
-    ...state,
-    drivers: [...driversDob].splice(0, driversPerPage),
-    driversCopy: driversDob,
-    currentPage: 0,
-  };   
-      
-        case FILTER_ALL_TEAMS:         
-          return{
-            ...state,
-            teams: action.payload,
-          }
+    case ORDER_BY_DOB:
+      driversDob = [...state.driversCopy];
+      driversDob.sort((a, b) => {
+        const dateA = new Date(a.birthdate);
+        const dateB = new Date(b.birthdate);
 
-          case FILTER_TEAMS:
-            drivers = [...state.driversCopy];
-            driverTeams = action.payload === "all"
-              ? drivers
-              : drivers.filter((driver) => driver.teams && driver.teams.includes(action.payload));
-            return {
-              ...state,
-              drivers: [...driverTeams],
-             
-              currentPage: 0,
-            };
-          
+        if (action.payload === "desc") {
+          return dateA - dateB;
+        } else if (action.payload === "asc") {
+          return dateB - dateA;
+        }
+        return 0;
+      });
+      return {
+        ...state,
+        drivers: driversDob,
+        driversCopy: driversDob,
+      };
 
-        case FILTER_APIDB:
-          apiDbCopy = [...state.driversCopy];      
-          driversApiDb = 
-          action.payload === "database" 
-            ? apiDbCopy.filter((driver) => driver.createDb)
-            : apiDbCopy.filter((driver) => !driver.createDb)            
-            
-            return {
-              ...state,
-              drivers: action.payload === "all" ? apiDbCopy : driversApiDb, 
-            
-              currentPage: 0,
-            }
-        
+    case FILTER_ALL_TEAMS:
+      return {
+        ...state,
+        teams: action.payload,
+      };
 
-            case PAGINATE:
-              next_page = state.currentPage + 1;
-              prev_page = state.currentPage - 1;
-              firstIndex = action.payload === "next" ? next_page * driversPerPage : prev_page * driversPerPage;
+    case FILTER_TEAMS:
+      drivers = [...state.driversCopy];
+      driverTeams =
+        action.payload === "all"
+          ? drivers
+          : drivers.filter(
+              (driver) => driver.teams && driver.teams.includes(action.payload)
+            );
+      return {
+        ...state,
+        drivers: driverTeams,
+        driversFiltered: driverTeams,
 
-              if(action.payload === "next" && firstIndex >= state.driversCopy.length) return state;
-              else if(action.payload === "prev" && prev_page < 0) return state;
+        filters: true,
+      };
 
-              return{
-                ...state,
-                drivers: [...state.driversCopy].splice(firstIndex, driversPerPage),
-                currentPage: action.payload === "next" ? next_page : prev_page
-              }
-              
+    case FILTER_APIDB:
+      apiDbCopy = [...state.driversCopy];
+      driversApiDb =
+        action.payload === "database"
+          ? apiDbCopy.filter((driver) => driver.createDb)
+          : apiDbCopy.filter((driver) => !driver.createDb);
+
+      return {
+        ...state,
+        drivers: action.payload === "all" ? apiDbCopy : driversApiDb,
+        driversFiltered: driversApiDb,
+      };
+
     default:
       return state;
   }
-}
+};
 
-  
-  export default Reducer;
+export default Reducer;
