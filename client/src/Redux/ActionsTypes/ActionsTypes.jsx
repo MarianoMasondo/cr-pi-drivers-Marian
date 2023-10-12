@@ -6,4 +6,3 @@ export const ORDER_BY_DOB = "ORDER_BY_DOB";
 export const FILTER_ALL_TEAMS = "FILTER_ALL_TEAMS";
 export const FILTER_TEAMS = "FILTER_TEAMS";
 export const FILTER_APIDB = "FILTER_APIDB";
-// export const PAGINATE = "PAGINATE";

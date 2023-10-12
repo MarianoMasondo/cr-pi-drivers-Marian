@@ -1,21 +1,26 @@
 .pagination-container {
-  margin: 4px;
+  display: flex;
+  justify-content: center;
+  margin-top: 4px;
+  position: fixed;
+  bottom: 0;
 }
 
 .pagination-buttons {
   display: flex;
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .pagination-buttons button {
-  margin: 5px; 
+  margin: 5px;
   padding: 10px;
   border-radius: 10%;
   cursor: pointer;
   color: white;
   background-color: red;
   border: 1px solid white;
-  width: 50px; 
+  width: 50px;
   text-align: center;
 }
 

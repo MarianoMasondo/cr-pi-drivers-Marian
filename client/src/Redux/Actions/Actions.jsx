@@ -13,7 +13,6 @@ import {
 
 export const getDrivers = () => {
   return async function (dispatch) {
-    console.log("GET_DRIVERS action dispatched");
     const drivers = await axios.get(`http://localhost:3001/drivers`);
     dispatch({ type: GET_DRIVERS, payload: drivers.data });
   };

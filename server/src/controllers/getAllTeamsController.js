@@ -6,21 +6,20 @@ const allTeams = async () => {
     const response = await axios.get(`http://localhost:5000/drivers`);
     const drivers = response.data;
 
-    const uniqueTeamNames = new Set(); 
+    const uniqueTeamNames = new Set();
 
-    drivers.forEach(driver => {
+    drivers.forEach((driver) => {
       if (driver.teams) {
         let teams = driver.teams.split(/\s*,\s*/);
 
-        teams.forEach(teamName => {
-         
+        teams.forEach((teamName) => {
           if (!uniqueTeamNames.has(teamName)) {
             uniqueTeamNames.add(teamName);
 
             Team.findOrCreate({
               where: {
-                name: teamName
-              }
+                name: teamName,
+              },
             });
           }
         });
@@ -28,13 +27,10 @@ const allTeams = async () => {
     });
 
     const allDataTeams = await Team.findAll();
-    console.log(allDataTeams.length)
     return allDataTeams;
-  } 
-  catch (error) {
-    throw error; 
+  } catch (error) {
+    throw error;
   }
 };
 
 module.exports = allTeams;
-

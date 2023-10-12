@@ -53,15 +53,15 @@ const Filter = () => {
       </div>
 
       <div className="filter-imput">
-        <span>Filter by Source</span>
+        <span>Filter by Source: </span>
         <label>
           <input
             type="radio"
-            value="api"
-            checked={selectedTeam === "api"}
+            value="all"
+            checked={selectedTeam === "all"}
             onChange={handleSourceFilter}
           />
-          Api
+          All
         </label>
         <label>
           <input
@@ -75,11 +75,11 @@ const Filter = () => {
         <label>
           <input
             type="radio"
-            value="all"
-            checked={selectedTeam === "all"}
+            value="api"
+            checked={selectedTeam === "api"}
             onChange={handleSourceFilter}
           />
-          All
+          Api
         </label>
       </div>
     </div>

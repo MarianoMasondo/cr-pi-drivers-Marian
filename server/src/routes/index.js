@@ -4,7 +4,7 @@ const teamsRoutes = require("./Teams");
 
 const router = Router();
 
-router.use("/drivers", driversRoutes );
+router.use("/drivers", driversRoutes);
 router.use("/teams", teamsRoutes);
 
 module.exports = router;

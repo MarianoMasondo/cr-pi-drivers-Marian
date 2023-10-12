@@ -8,7 +8,6 @@ const Detail = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const driverDetail = useSelector((state) => state.driverDetail);
-  console.log(driverDetail);
 
   useEffect(() => {
     dispatch(getDriverDetail(id));
