@@ -121,7 +121,6 @@ const Reducer = (state = initialState, action) => {
         ...state,
         drivers: driverTeams,
         driversFiltered: driverTeams,
-
         filters: true,
       };
 

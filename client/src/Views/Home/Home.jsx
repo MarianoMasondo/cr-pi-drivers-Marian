@@ -16,12 +16,6 @@ const Home = () => {
   const indexOfLastDriver = currentPage * driversPerPage;
   const indexOfFirstDriver = indexOfLastDriver - driversPerPage;
   const currentDrivers = drivers.slice(indexOfFirstDriver, indexOfLastDriver);
-  
-  console.log("Drivers", drivers);
-  console.log("currentPage", currentPage);
-  console.log("driversPerPage", driversPerPage);
-  console.log("indexOfLastDriver", indexOfLastDriver);
-  console.log("indexOfFirstDriver", indexOfFirstDriver);
 
   useEffect(() => {
     dispatch(getDrivers());
