@@ -4,14 +4,33 @@ import "./Pagination.css";
 const Pagination = ({ currentPage, driversPerPage, drivers, paginate }) => {
   const totalPages = Math.ceil(drivers.length / driversPerPage);
 
+  const pageRange = 10;
+  let startPage, endPage;
+
+  if (totalPages <= pageRange) {
+    // If total pages are less than or equal to the pageRange, show all pages.
+    startPage = 1;
+    endPage = totalPages;
+  } else {
+    // Calculate start and end accordingly.
+    startPage = Math.floor((currentPage - 1) / pageRange) * pageRange + 1;
+    endPage = Math.min(totalPages, startPage + pageRange - 1);
+  }
+
   const pages = [];
-  for (let i = 1; i <= totalPages; i++) {
+  for (let i = startPage; i <= endPage; i++) {
     pages.push(i);
   }
 
   return (
     <nav className="pagination-container">
       <div className="pagination-buttons">
+        <button
+          onClick={() => paginate(currentPage - 10)}
+          disabled={currentPage <= 10}
+        >
+          -10
+        </button>
         <button
           onClick={() => paginate(currentPage - 1)}
           disabled={currentPage === 1}
@@ -33,6 +52,12 @@ const Pagination = ({ currentPage, driversPerPage, drivers, paginate }) => {
         >
           Next
         </button>
+        <button
+          onClick={() => paginate(currentPage + 10)}
+          disabled={currentPage + 10 > totalPages}
+        >
+          +10
+        </button>
       </div>
     </nav>
   );
@@ -46,3 +71,6 @@ Pagination.propTypes = {
 };
 
 export default Pagination;
+
+
+
