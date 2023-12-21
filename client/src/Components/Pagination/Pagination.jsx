@@ -4,15 +4,13 @@ import "./Pagination.css";
 const Pagination = ({ currentPage, driversPerPage, drivers, paginate }) => {
   const totalPages = Math.ceil(drivers.length / driversPerPage);
 
-  const pageRange = 10;
+  const pageRange = 5;
   let startPage, endPage;
 
   if (totalPages <= pageRange) {
-    // If total pages are less than or equal to the pageRange, show all pages.
     startPage = 1;
     endPage = totalPages;
   } else {
-    // Calculate start and end accordingly.
     startPage = Math.floor((currentPage - 1) / pageRange) * pageRange + 1;
     endPage = Math.min(totalPages, startPage + pageRange - 1);
   }
