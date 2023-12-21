@@ -2,7 +2,7 @@
   background-image: url("https://wallpapercave.com/wp/wp11966684.jpg");
   background-size: cover;
   background-position: center;
-  height: 85.7vh;
+  height: 150vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,14 +11,14 @@
 
 .driver-card {
   background-color: rgba(33, 31, 31, 0.8);
-  width: 40%;
-  padding: 20px;
+  width: 100%; 
   border-radius: 10px;
   box-shadow: 0px 0px 30px rgba(245, 243, 243, 0.2);
   margin-top: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 2%;
 }
 
 .driver-info {
@@ -26,7 +26,7 @@
   display: flex;
   align-items: center;
   width: 100%;
-  margin-bottom: 10px;
+  margin: 10px;
 }
 
 .info-left {
@@ -41,6 +41,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .info-right {
@@ -67,8 +69,8 @@
 }
 
 .img-container {
-  height: 250px;
-  width: 250px;
+  height: 150px;
+  width: 150px;
   border-radius: 20px;
 }
 
@@ -82,6 +84,7 @@
 .driver-description {
   color: aliceblue;
   text-align: left;
+  padding: 2%
 }
 
 .back-home:hover {
@@ -89,15 +92,55 @@
 }
 
 @media screen and (min-width: 768px) {
-  .driver-card {
-    background-color: rgba(33, 31, 31, 0.8);
-    width: 100%;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 30px rgba(245, 243, 243, 0.2);
-    margin-top: 30px;
+  .detail-container {
+    background-image: url("https://wallpapercave.com/wp/wp11966684.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 85.7vh;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 1%;
+  }
+  .driver-card {
+    width: 50%; 
+    height: auto;
+  }
+  .info-center{
+    display: flex;
+    flex-direction: row;
+  }
+
+  .img-container {
+    height: 250px;
+    width: 250px;
+    border-radius: 20px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .detail-container {
+    background-image: url("https://wallpapercave.com/wp/wp11966684.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 130vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1%;
+  }
+  .driver-card {
+    width: 40%; 
+    height: auto;
+    padding: 1%;
+  }
+  .info-center{
+    display: flex;
+    flex-direction: row;
+  }
+
+  .img-container {
+    height: 250px;
+    width: 250px;
+    border-radius: 20px;
   }
 }

@@ -43,6 +43,7 @@
     flex-direction: row;
     text-align: center;
     width: 100%;
+    height: auto;
   }
   .title-container {  
     font-size: 1rem;
