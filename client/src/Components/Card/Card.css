@@ -1,6 +1,6 @@
 .card {
-  width: 300px;
-  height: 300px;
+  width: 20em;
+  height: 20em;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -83,4 +83,22 @@
 
 .card:hover .card-info {
   transform: translate(0%, -15%);
+}
+
+@media only screen and (max-width: 768px) {
+  .card {
+    width: 15em;
+    height: 15em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 10px;
+    background-color: #fffffe;
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s ease;
+  }
 }

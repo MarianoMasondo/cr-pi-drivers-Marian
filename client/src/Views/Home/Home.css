@@ -42,5 +42,10 @@
   .pagination-containerCards {
     gap: 0.5em; 
     padding: 10px; 
+    width: 90%;
+  }
+
+  .home-container {
+    width: 100%;
   }
 }
