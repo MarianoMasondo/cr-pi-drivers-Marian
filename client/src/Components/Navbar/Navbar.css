@@ -1,6 +1,7 @@
 .nav-container {
   background-color: red;
-  height: 10vh;
+  height: 11vh;
+  width: auto;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -8,14 +9,14 @@
 }
 
 .title-container {
-  margin-left: 20px;
   font-size: 2rem;
   color: whitesmoke;
+  margin: 2%;
 }
 
 .button-container {
-  margin-right: 20px;
   padding: auto;
+  margin: 2%;
 }
 
 .nav-button {
@@ -41,9 +42,9 @@
   .nav-container {
     flex-direction: row;
     text-align: center;
+    width: 100%;
   }
-  .title-container {
-    margin-left: 20px;
+  .title-container {  
     font-size: 1rem;
     color: whitesmoke;
   }

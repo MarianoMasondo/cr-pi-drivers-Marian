@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
 import "./Home.css";
 import { getDrivers } from "../../Redux/Actions/Actions";
-import Searchbar from "../../Components/Searchbar/Searchbar";
 import OrderDrivers from "../../Components/Order/OrderDrivers";
 import Filter from "../../Components/Filter/Filter";
 import { useEffect, useState } from "react";
 import Pagination from "../../Components/Pagination/Pagination";
 import Card from "../../Components/card/Card";
+import Searchbar from "../../Components/Searchbar/Searchbar";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -28,8 +28,10 @@ const Home = () => {
   return (
     <div className="home-container">
       <div className="filter-container">
+       <Searchbar className="searchbar" />
+      </div>
+      <div className="filter-container">      
         <OrderDrivers className="order-drivers" />
-        <Searchbar className="searchbar" />
         <Filter />
       </div>
       <div className={`${"pagination-containerCards"} ${"card-Container"}`}>

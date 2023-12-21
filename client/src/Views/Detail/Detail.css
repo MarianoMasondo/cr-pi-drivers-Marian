@@ -87,3 +87,17 @@
 .back-home:hover {
   background-color: grey;
 }
+
+@media screen and (min-width: 768px) {
+  .driver-card {
+    background-color: rgba(33, 31, 31, 0.8);
+    width: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 30px rgba(245, 243, 243, 0.2);
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
