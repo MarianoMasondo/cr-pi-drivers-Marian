@@ -6,6 +6,8 @@ import Form from "./Views/Form/Form";
 import Detail from "./Views/Detail/Detail";
 import Navbar from "./Components/Navbar/Navbar";
 import About from "./Views/About/About";
+import axios from "axios";
+axios.defaults.baseURL = "http://localhost:3001/"
 
 function App() {
   const location = useLocation();

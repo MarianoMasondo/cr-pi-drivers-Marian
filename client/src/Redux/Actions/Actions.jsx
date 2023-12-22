@@ -13,14 +13,14 @@ import {
 
 export const getDrivers = () => {
   return async function (dispatch) {
-    const drivers = await axios.get(`http://localhost:3001/drivers`);
+    const drivers = await axios.get(`/drivers`);
     dispatch({ type: GET_DRIVERS, payload: drivers.data });
   };
 };
 
 export const getDriverDetail = (id) => {
   return async function (dispatch) {
-    const driverDetail = await axios.get(`http://localhost:3001/drivers/${id}`);
+    const driverDetail = await axios.get(`/drivers/${id}`);
     dispatch({
       type: GET_DRIVER_DETAIL,
       payload: driverDetail.data,
@@ -50,7 +50,7 @@ export const orderByDob = (payload) => {
 
 export const allTeams = () => {
   return async (dispatch) => {
-    const teams = await axios.get(`http://localhost:3001/teams`);
+    const teams = await axios.get(`/teams`);
     dispatch({
       type: FILTER_ALL_TEAMS,
       payload: teams.data,
