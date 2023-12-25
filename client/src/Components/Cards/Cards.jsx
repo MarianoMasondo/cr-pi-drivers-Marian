@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import "./Cards.css";
-import Card from "../card/Card";
+import Card from "../Card/Card";
 
 const Cards = () => {
   const drivers = useSelector((state) => state.drivers);
