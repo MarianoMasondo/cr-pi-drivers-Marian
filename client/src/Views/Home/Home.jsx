@@ -8,7 +8,6 @@ import Pagination from "../../Components/Pagination/Pagination";
 import Searchbar from "../../Components/Searchbar/Searchbar";
 import Card from "../../Components/card/Card";
 
-
 const Home = () => {
   const dispatch = useDispatch();
   const drivers = useSelector((state) => state.drivers);
@@ -29,9 +28,9 @@ const Home = () => {
   return (
     <div className="home-container">
       <div className="filter-container">
-       <Searchbar className="searchbar" />
+        <Searchbar className="searchbar" />
       </div>
-      <div className="filter-container">      
+      <div className="filter-container">
         <OrderDrivers className="order-drivers" />
         <Filter />
       </div>
