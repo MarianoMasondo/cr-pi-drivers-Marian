@@ -2,7 +2,7 @@
   background-image: url("https://wallpapercave.com/wp/wp12595187.jpg");
   background-size: cover;
   background-position: center;
-  min-height: 100vh;
+  min-height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -27,7 +27,8 @@
   gap: 2em;
   backdrop-filter: blur(0);
   background-color: rgba(255, 232, 214, 0.5);
-  width: 80%;
+  width: 75%;
+  min-height: 60vh;
   margin: 3px auto 0;
   padding: 25px;
 }
