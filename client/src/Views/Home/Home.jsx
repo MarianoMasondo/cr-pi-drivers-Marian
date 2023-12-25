@@ -5,8 +5,8 @@ import OrderDrivers from "../../Components/Order/OrderDrivers";
 import Filter from "../../Components/Filter/Filter";
 import { useEffect, useState } from "react";
 import Pagination from "../../Components/Pagination/Pagination";
-import Card from "../../Components/card/Card";
 import Searchbar from "../../Components/Searchbar/Searchbar";
+import Card from "../Components/Card/Card";
 
 const Home = () => {
   const dispatch = useDispatch();
