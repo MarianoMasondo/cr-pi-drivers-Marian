@@ -7,7 +7,7 @@ import Detail from "./Views/Detail/Detail";
 import Navbar from "./Components/Navbar/Navbar";
 import About from "./Views/About/About";
 import axios from "axios";
-axios.defaults.baseURL = import.meta.env.VITE_BACKEND_URL;
+axios.defaults.baseURL = import.meta.env.VITE_API_URL;
 
 function App() {
   const location = useLocation();
