@@ -1,13 +1,16 @@
 const { Router } = require("express");
-const getNameDrivers = require("../handlers/getDriverNameHandler");
-const postNewDriver = require("../handlers/postDriverHandler");
-const getAllDrivers = require("../handlers/getAllDriversHandler");
-const getDriverById = require("../handlers/getDriverIdHandler");
+const getNameDriversHandler = require("../handlers/getDriverNameHandler");
+const postNewDriverHandler = require("../handlers/postDriverHandler");
+const getAllDriversHandler = require("../handlers/getAllDriversHandler");
+const getDriverByIdHandler = require("../handlers/getDriverIdHandler");
+const deleteDriverHandler = require("../handlers/deleteDriverHandler");
 
 const driversRoutes = Router();
-driversRoutes.get("/name", getNameDrivers);
-driversRoutes.get("/:id", getDriverById);
-driversRoutes.get("/", getAllDrivers);
-driversRoutes.post("/", postNewDriver);
+
+driversRoutes.get("/name", getNameDriversHandler);
+driversRoutes.get("/:id", getDriverByIdHandler);
+driversRoutes.get("/", getAllDriversHandler);
+driversRoutes.post("/", postNewDriverHandler);
+driversRoutes.delete("/:id", deleteDriverHandler);
 
 module.exports = driversRoutes;
