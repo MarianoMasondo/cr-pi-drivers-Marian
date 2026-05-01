@@ -1,10 +1,9 @@
-const axios = require("axios");
 const { Team } = require("../db");
+const data = require("../../api/db.json");
 
 const allTeams = async () => {
   try {
-    const response = await axios.get(`http://localhost:5000/drivers`);
-    const drivers = response.data;
+    const drivers = data.drivers;
 
     const uniqueTeamNames = new Set();
 
@@ -13,20 +12,25 @@ const allTeams = async () => {
         let teams = driver.teams.split(/\s*,\s*/);
 
         teams.forEach((teamName) => {
-          if (!uniqueTeamNames.has(teamName)) {
+          if (teamName && !uniqueTeamNames.has(teamName)) {
             uniqueTeamNames.add(teamName);
-
-            Team.findOrCreate({
-              where: {
-                name: teamName,
-              },
-            });
           }
         });
       }
     });
 
+    const teamsArray = [...uniqueTeamNames];
+
+    await Promise.all(
+      teamsArray.map((teamName) =>
+        Team.findOrCreate({
+          where: { name: teamName },
+        })
+      )
+    );
+
     const allDataTeams = await Team.findAll();
+
     return allDataTeams;
   } catch (error) {
     throw error;
