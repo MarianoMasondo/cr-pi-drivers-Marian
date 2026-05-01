@@ -3,7 +3,7 @@ import "./Card.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { allDrivers } from "../../Redux/Actions/Actions";
+import { getDrivers } from "../../Redux/Actions/Actions";
 
 const Card = ({ id, name, lastname, teams, image, createDb }) => {
   const dispatch = useDispatch();
@@ -21,7 +21,7 @@ const Card = ({ id, name, lastname, teams, image, createDb }) => {
     try {
       await axios.delete(`/drivers/${id}`);
       alert("Driver deleted successfully");
-      dispatch(allDrivers());
+      dispatch(getDrivers());
     } catch (error) {
       alert(error.response?.data?.error || "Error deleting driver");
     }
