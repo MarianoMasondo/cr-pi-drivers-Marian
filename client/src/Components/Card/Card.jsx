@@ -1,8 +1,32 @@
 import PropTypes from "prop-types";
 import "./Card.css";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { allDrivers } from "../../Redux/Actions/Actions";
 
-const Card = ({ id, name, lastname, teams, image }) => {
+const Card = ({ id, name, lastname, teams, image, createDb }) => {
+  const dispatch = useDispatch();
+
+  const handleDelete = async (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    const confirmDelete = window.confirm(
+      `Are you sure you want to delete ${name} ${lastname}?`
+    );
+
+    if (!confirmDelete) return;
+
+    try {
+      await axios.delete(`/drivers/${id}`);
+      alert("Driver deleted successfully");
+      dispatch(allDrivers());
+    } catch (error) {
+      alert(error.response?.data?.error || "Error deleting driver");
+    }
+  };
+
   return (
     <Link to={`/detail/${id}`} style={{ textDecoration: "none" }}>
       <div className="card">
@@ -22,10 +46,17 @@ const Card = ({ id, name, lastname, teams, image }) => {
           <span>
             {name} {lastname}
           </span>
+
           <div>
             <label>Teams:</label>
-            <p>{teams}</p>
+            <p>{Array.isArray(teams) ? teams.join(", ") : teams}</p>
           </div>
+
+          {createDb && (
+            <button type="button" onClick={handleDelete}>
+              Delete
+            </button>
+          )}
         </div>
       </div>
     </Link>
@@ -38,6 +69,7 @@ Card.propTypes = {
   lastname: PropTypes.string.isRequired,
   teams: PropTypes.oneOfType([PropTypes.string, PropTypes.array]).isRequired,
   image: PropTypes.string,
+  createDb: PropTypes.bool,
 };
 
 export default Card;
