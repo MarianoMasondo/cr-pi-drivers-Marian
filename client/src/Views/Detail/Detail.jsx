@@ -19,6 +19,7 @@ const Detail = () => {
         <Link to="/home">
           <button className="back-home">Home</button>
         </Link>
+
         <div className="info-left">
           <div className="logo-container">
             <img
@@ -29,8 +30,20 @@ const Detail = () => {
             <p className="license-text">Driver Detail</p>
           </div>
         </div>
+
         <div className="info-center">
-          <img src={driverDetail.image} className="img-container" alt="" />
+          <img
+            src={driverDetail.image || "/default-driver.jpg"}
+            className="img-container"
+            alt={`${driverDetail.name || "Driver"} ${
+              driverDetail.lastname || ""
+            }`}
+            onError={(e) => {
+              e.currentTarget.onerror = null;
+              e.currentTarget.src = "/default-driver.jpg";
+            }}
+          />
+
           <div className="driver-fields">
             <div className="driver-field">
               <p>ID: {driverDetail.id}</p>
@@ -54,6 +67,7 @@ const Detail = () => {
             </div>
           </div>
         </div>
+
         <div className="driver-description">
           <p>Description: {driverDetail.description}</p>
         </div>
