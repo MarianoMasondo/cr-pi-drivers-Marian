@@ -69,7 +69,7 @@ const Form = () => {
     const formErrors = validate(form);
     if (Object.keys(formErrors).length === 0) {
       axios
-        .post("http://localhost:3001/drivers", form)
+        .post("/drivers", form)
         .then(() => {
           alert("Driver created successfully");
           setForm({
