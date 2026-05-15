@@ -8,9 +8,9 @@ import { getDrivers } from "../../Redux/Actions/Actions";
 const Card = ({ id, name, lastname, teams, image, createDb }) => {
   const dispatch = useDispatch();
 
-  const handleDelete = async (e) => {
-    e.preventDefault();
-    e.stopPropagation();
+  const handleDelete = async (event) => {
+    event.preventDefault();
+    event.stopPropagation();
 
     const confirmDelete = window.confirm(
       `Are you sure you want to delete ${name} ${lastname}?`
@@ -33,42 +33,27 @@ const Card = ({ id, name, lastname, teams, image, createDb }) => {
 
   return (
     <article className="driver-card">
-      <Link to={`/detail/${id}`} className="driver-card__link">
-        <div className="driver-card__image-container">
-          <img
-            src={image || "/default-driver.jpg"}
-            alt={`${name} ${lastname}`}
-            className="driver-card__image"
-            onError={(e) => {
-              e.currentTarget.onerror = null;
-              e.currentTarget.src = "/default-driver.jpg";
-            }}
-          />
-        </div>
+      {createDb && (
+        <button className="driver-card-delete" onClick={handleDelete}>
+          ×
+        </button>
+      )}
 
-        <div className="driver-card__content">
-          <p className="driver-card__tag">Driver</p>
+      <Link to={`/detail/${id}`} className="driver-card-link">
+        <img
+          src={image}
+          alt={`${name} ${lastname}`}
+          className="driver-card-image"
+        />
 
-          <h3 className="driver-card__name">
+        <div className="driver-card-info">
+          <h3 className="driver-card-name">
             {name} {lastname}
           </h3>
 
-          <div className="driver-card__teams">
-            <span>Teams</span>
-            <p>{formattedTeams}</p>
-          </div>
+          <p className="driver-card-teams">{formattedTeams}</p>
         </div>
       </Link>
-
-      {createDb && (
-        <button
-          type="button"
-          className="driver-card__delete"
-          onClick={handleDelete}
-        >
-          Delete
-        </button>
-      )}
     </article>
   );
 };
@@ -78,7 +63,7 @@ Card.propTypes = {
   name: PropTypes.string.isRequired,
   lastname: PropTypes.string.isRequired,
   teams: PropTypes.oneOfType([PropTypes.string, PropTypes.array]).isRequired,
-  image: PropTypes.string,
+  image: PropTypes.string.isRequired,
   createDb: PropTypes.bool,
 };
 
