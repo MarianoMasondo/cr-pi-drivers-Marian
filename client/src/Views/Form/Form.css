@@ -1,11 +1,13 @@
 .form-container {
   min-height: calc(100vh - 86px);
-  padding: 24px 5vw 24px 24px;
+  height: calc(100vh - 86px);
+  padding: 14px 2.2vw 14px 24px;
   display: flex;
   justify-content: flex-end;
   align-items: flex-start;
+  overflow: hidden;
   background-image:
-    linear-gradient(rgba(4, 6, 15, 0.08), rgba(4, 6, 15, 0.38)),
+    linear-gradient(rgba(4, 6, 15, 0.04), rgba(4, 6, 15, 0.2)),
     url("https://wallpapercave.com/wp/wp11416346.jpg");
   background-size: cover;
   background-position: left center;
@@ -13,22 +15,23 @@
 }
 
 .form-card {
-  width: min(520px, 100%);
-  margin-top: 20px;
-  padding: 22px 22px 20px;
-  border-radius: 26px;
-  background: rgba(10, 14, 28, 0.72);
+  width: min(500px, 100%);
+  margin-top: 0;
+  margin-right: 0;
+  padding: 20px 20px 18px;
+  border-radius: 24px;
+  background: rgba(10, 14, 28, 0.68);
   border: 1px solid rgba(255, 255, 255, 0.14);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.28);
-  backdrop-filter: blur(12px);
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.26);
+  backdrop-filter: blur(10px);
 }
 
 .form-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 14px;
-  margin-bottom: 16px;
+  gap: 12px;
+  margin-bottom: 14px;
 }
 
 .form-header-text {
@@ -37,13 +40,13 @@
 
 .form-badge {
   display: inline-block;
-  margin-bottom: 8px;
+  margin-bottom: 7px;
   padding: 5px 12px;
   border-radius: 999px;
   background: rgba(255, 0, 0, 0.16);
   border: 1px solid rgba(255, 255, 255, 0.18);
   color: #ffffff;
-  font-size: 0.66rem;
+  font-size: 0.65rem;
   font-weight: 800;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -52,22 +55,22 @@
 .h1-form {
   margin: 0;
   color: #ffffff;
-  font-size: clamp(1.9rem, 3vw, 2.45rem);
+  font-size: clamp(1.75rem, 2.6vw, 2.25rem);
   font-weight: 900;
   line-height: 1.05;
 }
 
 .form-subtitle {
-  margin: 6px 0 0;
+  margin: 5px 0 0;
   color: rgba(255, 255, 255, 0.72);
-  font-size: 0.88rem;
-  line-height: 1.35;
+  font-size: 0.84rem;
+  line-height: 1.3;
 }
 
 .back-home {
-  min-width: 108px;
-  height: 38px;
-  padding: 0 15px;
+  min-width: 102px;
+  height: 36px;
+  padding: 0 14px;
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -75,7 +78,7 @@
   background: rgba(255, 255, 255, 0.94);
   color: #161a42;
   text-decoration: none;
-  font-size: 0.84rem;
+  font-size: 0.8rem;
   font-weight: 800;
   white-space: nowrap;
   transition:
@@ -93,13 +96,13 @@
 .form-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px 12px;
+  gap: 10px 11px;
 }
 
 .form-field {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 4px;
 }
 
 .form-field-full {
@@ -108,7 +111,7 @@
 
 .form-field label {
   color: #ffffff;
-  font-size: 0.68rem;
+  font-size: 0.66rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -117,15 +120,15 @@
 .input-container,
 .select-team {
   width: 100%;
-  height: 42px;
-  padding: 0 13px;
+  height: 39px;
+  padding: 0 12px;
   border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 14px;
+  border-radius: 13px;
   outline: none;
   box-sizing: border-box;
   background: rgba(255, 255, 255, 0.95);
   color: #161a42;
-  font-size: 0.9rem;
+  font-size: 0.86rem;
   font-weight: 600;
   transition:
     border-color 0.2s ease,
@@ -147,8 +150,9 @@
 }
 
 .textarea-container {
-  min-height: 88px;
-  padding: 12px 13px;
+  min-height: 74px;
+  max-height: 74px;
+  padding: 11px 12px;
   resize: none;
   font-family: inherit;
   line-height: 1.35;
@@ -157,31 +161,31 @@
 .teams-container-create {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 4px;
 }
 
 .teams-help {
   color: rgba(255, 255, 255, 0.65);
-  font-size: 0.72rem;
+  font-size: 0.7rem;
 }
 
 .selected {
-  margin-top: 8px;
+  margin-top: 7px;
   display: flex;
   flex-wrap: wrap;
-  gap: 7px;
+  gap: 6px;
 }
 
 .team-span {
-  min-height: 28px;
-  padding: 4px 8px 4px 11px;
+  min-height: 26px;
+  padding: 4px 8px 4px 10px;
   display: inline-flex;
   align-items: center;
   gap: 6px;
   border-radius: 999px;
   background: linear-gradient(135deg, #ff0000, #ff7a2f);
   color: #ffffff;
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 800;
 }
 
@@ -212,20 +216,20 @@
 }
 
 .form-actions {
-  margin-top: 16px;
+  margin-top: 14px;
   display: flex;
   justify-content: center;
 }
 
 .submit {
-  min-width: 180px;
-  height: 42px;
+  min-width: 170px;
+  height: 40px;
   border: none;
   border-radius: 999px;
   background: linear-gradient(135deg, #ff0000, #ff7a2f);
   color: #ffffff;
   cursor: pointer;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 900;
   transition:
     transform 0.22s ease,
@@ -252,26 +256,58 @@
 .error-text {
   margin: 0;
   color: #ffb4b4;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 700;
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1366px) {
   .form-container {
-    padding-right: 32px;
+    padding: 10px 1.4vw 10px 24px;
+    background-position: left center;
   }
 
   .form-card {
-    width: min(500px, 100%);
+    width: 460px;
+    padding: 17px 18px 16px;
+    border-radius: 22px;
+  }
+
+  .h1-form {
+    font-size: 1.8rem;
+  }
+
+  .form-subtitle {
+    font-size: 0.78rem;
+  }
+
+  .form-grid {
+    gap: 8px 10px;
+  }
+
+  .input-container,
+  .select-team {
+    height: 36px;
+    font-size: 0.82rem;
+  }
+
+  .textarea-container {
+    min-height: 62px;
+    max-height: 62px;
+  }
+
+  .submit {
+    height: 38px;
   }
 }
 
 @media (max-width: 768px) {
   .form-container {
     min-height: auto;
+    height: auto;
     padding: 20px 14px;
     justify-content: center;
     align-items: flex-start;
+    overflow: visible;
     background-position: center;
   }
 
