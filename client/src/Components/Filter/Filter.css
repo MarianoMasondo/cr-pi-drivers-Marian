@@ -1,13 +1,13 @@
 .filter-wrapper {
   display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
+  align-items: end;
+  gap: 14px;
+  flex-wrap: nowrap;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 900px) {
   .filter-wrapper {
     width: 100%;
-    justify-content: center;
+    flex-direction: column;
   }
 }
