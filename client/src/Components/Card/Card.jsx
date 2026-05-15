@@ -27,14 +27,18 @@ const Card = ({ id, name, lastname, teams, image, createDb }) => {
     }
   };
 
+  const formattedTeams = Array.isArray(teams)
+    ? teams.join(", ")
+    : teams || "No teams available";
+
   return (
-    <Link to={`/detail/${id}`} style={{ textDecoration: "none" }}>
-      <div className="card">
-        <div>
+    <article className="driver-card">
+      <Link to={`/detail/${id}`} className="driver-card__link">
+        <div className="driver-card__image-container">
           <img
             src={image || "/default-driver.jpg"}
             alt={`${name} ${lastname}`}
-            className="image"
+            className="driver-card__image"
             onError={(e) => {
               e.currentTarget.onerror = null;
               e.currentTarget.src = "/default-driver.jpg";
@@ -42,24 +46,30 @@ const Card = ({ id, name, lastname, teams, image, createDb }) => {
           />
         </div>
 
-        <div className="card-info">
-          <span>
+        <div className="driver-card__content">
+          <p className="driver-card__tag">Driver</p>
+
+          <h3 className="driver-card__name">
             {name} {lastname}
-          </span>
+          </h3>
 
-          <div>
-            <label>Teams:</label>
-            <p>{Array.isArray(teams) ? teams.join(", ") : teams}</p>
+          <div className="driver-card__teams">
+            <span>Teams</span>
+            <p>{formattedTeams}</p>
           </div>
-
-          {createDb && (
-            <button type="button" onClick={handleDelete}>
-              Delete
-            </button>
-          )}
         </div>
-      </div>
-    </Link>
+      </Link>
+
+      {createDb && (
+        <button
+          type="button"
+          className="driver-card__delete"
+          onClick={handleDelete}
+        >
+          Delete
+        </button>
+      )}
+    </article>
   );
 };
 
