@@ -1,6 +1,7 @@
 import "./About.css";
 import picture from "../../assets/picture.png";
 import { Link } from "react-router-dom";
+import { FaGithub, FaInstagram, FaLinkedinIn, FaXTwitter } from "react-icons/fa6";
 
 export default function About() {
   return (
@@ -48,36 +49,40 @@ export default function About() {
                   href="https://twitter.com/mason_nano"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="social-button"
+                  className="social-button twitter"
+                  aria-label="Twitter / X"
                 >
-                  X
+                  <FaXTwitter />
                 </a>
 
                 <a
                   href="https://www.instagram.com/mariano_dev/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="social-button"
+                  className="social-button instagram"
+                  aria-label="Instagram"
                 >
-                  IG
+                  <FaInstagram />
                 </a>
 
                 <a
                   href="https://github.com/MarianoMasondo"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="social-button"
+                  className="social-button github"
+                  aria-label="GitHub"
                 >
-                  GH
+                  <FaGithub />
                 </a>
 
                 <a
                   href="https://www.linkedin.com/in/mariano-masondo-7026b0254/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="social-button"
+                  className="social-button linkedin"
+                  aria-label="LinkedIn"
                 >
-                  IN
+                  <FaLinkedinIn />
                 </a>
               </div>
             </div>
