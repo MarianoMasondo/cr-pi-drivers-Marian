@@ -11,6 +11,7 @@ import {
 const Filter = () => {
   const dispatch = useDispatch();
   const [selectedTeam, setSelectedTeam] = useState("");
+  const [selectedSource, setSelectedSource] = useState("all");
   const teams = useSelector((state) => state.teams);
 
   useEffect(() => {
@@ -20,6 +21,7 @@ const Filter = () => {
   const handleFilter = (e) => {
     const selectedValue = e.target.value;
     setSelectedTeam(selectedValue);
+
     if (selectedValue === "all") {
       dispatch(getDrivers());
     } else {
@@ -29,7 +31,8 @@ const Filter = () => {
 
   const handleSourceFilter = (e) => {
     const selectedValue = e.target.value;
-    setSelectedTeam(selectedValue);
+    setSelectedSource(selectedValue);
+
     if (selectedValue === "all") {
       dispatch(filterApiDb("all"));
     } else if (selectedValue === "api") {
@@ -40,47 +43,38 @@ const Filter = () => {
   };
 
   return (
-    <div className="filter-container">
-      <div>
-        <select onChange={(e) => handleFilter(e)} value={selectedTeam}>
-          <option value="all">Filter by Team...</option>
+    <div className="filter-wrapper">
+      <div className="control-group">
+        <label className="control-label">Team</label>
+
+        <select
+          className="control-select"
+          onChange={handleFilter}
+          value={selectedTeam}
+        >
+          <option value="">Filter by team</option>
+          <option value="all">All teams</option>
+
           {teams?.map((team) => (
-            <option key={team.id} value={team.name}>
+            <option key={team.id || team.name} value={team.name}>
               {team.name}
             </option>
           ))}
         </select>
       </div>
 
-      <div className="filter-imput">
-        <span>Filter by Source: </span>
-        <label>
-          <input
-            type="radio"
-            value="all"
-            checked={selectedTeam === "all"}
-            onChange={handleSourceFilter}
-          />
-          All
-        </label>
-        <label>
-          <input
-            type="radio"
-            value="database"
-            checked={selectedTeam === "database"}
-            onChange={handleSourceFilter}
-          />
-          Database
-        </label>
-        <label>
-          <input
-            type="radio"
-            value="api"
-            checked={selectedTeam === "api"}
-            onChange={handleSourceFilter}
-          />
-          Api
-        </label>
+      <div className="control-group">
+        <label className="control-label">Source</label>
+
+        <select
+          className="control-select"
+          onChange={handleSourceFilter}
+          value={selectedSource}
+        >
+          <option value="all">All drivers</option>
+          <option value="database">Database</option>
+          <option value="api">Api</option>
+        </select>
       </div>
     </div>
   );

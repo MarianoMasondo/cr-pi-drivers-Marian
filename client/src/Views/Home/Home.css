@@ -10,10 +10,20 @@
 }
 
 .filter-container {
+  width: min(1100px, 94%);
+  margin: 18px auto 12px;
+  padding: 18px;
   display: flex;
   flex-direction: row;
-  margin: 0.5em 
-  
+  align-items: end;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  border-radius: 24px;
+  background: rgba(15, 23, 42, 0.34);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 16px 35px rgba(0, 0, 0, 0.18);
 }
 
 .pagination-containerCards {
@@ -35,14 +45,16 @@
 
 @media only screen and (max-width: 768px) {
   .filter-container {
+    width: 92%;
     flex-direction: column;
-    align-items: center;
-    margin: 10px;
+    align-items: stretch;
+    margin: 12px auto;
+    padding: 14px;
   }
 
   .pagination-containerCards {
-    gap: 0.5em; 
-    padding: 10px; 
+    gap: 0.5em;
+    padding: 10px;
     width: 90%;
   }
 

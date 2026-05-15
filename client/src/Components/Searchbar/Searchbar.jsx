@@ -15,15 +15,15 @@ const Searchbar = () => {
 
   return (
     <div className="search-container">
-      <form action="">
-        <input
-          className="search-container"
-          onChange={handleChange}
-          placeholder="Search Driver..."
-          type="search"
-          value={name}
-        />
-      </form>
+      <span className="search-icon">🔎</span>
+
+      <input
+        type="text"
+        value={name}
+        onChange={handleChange}
+        placeholder="Search driver..."
+        className="search-input"
+      />
     </div>
   );
 };

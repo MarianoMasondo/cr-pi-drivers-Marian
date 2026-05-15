@@ -1,3 +1,13 @@
-.filter-imput {
-  color: rgb(223, 202, 202);
+.filter-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 768px) {
+  .filter-wrapper {
+    width: 100%;
+    justify-content: center;
+  }
 }

@@ -17,16 +17,19 @@ const OrderDrivers = () => {
 
   const handleOrder = (e) => {
     e.preventDefault();
+
     if (e.target.value === "default") {
       dispatch(getDrivers());
     } else {
       dispatch(orderDrivers(e.target.value));
     }
+
     setAux(!aux);
   };
 
   const handleBirthday = (e) => {
     e.preventDefault();
+
     if (e.target.value === "default") {
       dispatch(getDrivers());
     } else if (e.target.value === "asc") {
@@ -34,23 +37,33 @@ const OrderDrivers = () => {
     } else if (e.target.value === "desc") {
       dispatch(orderByDob("desc"));
     }
+
     setAux(!aux);
   };
 
   return (
     <div className="order-container">
-      <div className="order-ascDesc">
-        <select onChange={(e) => handleOrder(e)}>
-          <option value="default">Order alphabetically</option>
-          <option value="asc">Ascendent</option>
-          <option value="desc">Descendent</option>
+      <div className="control-group">
+        <label className="control-label">Alphabetical</label>
+
+        <select className="control-select" onChange={handleOrder} defaultValue="default">
+          <option value="default">Order A-Z / Z-A</option>
+          <option value="asc">A to Z</option>
+          <option value="desc">Z to A</option>
         </select>
       </div>
-      <div className="order-dob">
-        <select onChange={(e) => handleBirthday(e)}>
+
+      <div className="control-group">
+        <label className="control-label">Birthday</label>
+
+        <select
+          className="control-select"
+          onChange={handleBirthday}
+          defaultValue="default"
+        >
           <option value="default">Order by birthday</option>
-          <option value="asc">Youngest</option>
-          <option value="desc">Oldest</option>
+          <option value="asc">Youngest first</option>
+          <option value="desc">Oldest first</option>
         </select>
       </div>
     </div>
