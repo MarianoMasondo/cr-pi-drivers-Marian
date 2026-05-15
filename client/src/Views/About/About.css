@@ -1,41 +1,44 @@
 .about-container {
   min-height: calc(100vh - 86px);
-  padding: 35px 20px;
+  height: calc(100vh - 86px);
+  padding: 14px 2.4vw 14px 24px;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-end;
+  align-items: flex-start;
+  overflow: hidden;
   background-image:
-    linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.35)),
+    linear-gradient(rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.2)),
     url("https://wallpapercave.com/wp/wp10228716.jpg");
   background-size: cover;
-  background-position: center;
+  background-position: left center;
   background-repeat: no-repeat;
 }
 
 .about-card {
-  width: min(1040px, 92%);
-  padding: 3px;
-  border-radius: 28px;
+  width: min(520px, 100%);
+  margin-top: 0;
+  padding: 2px;
+  border-radius: 26px;
   background: linear-gradient(
     135deg,
-    rgba(255, 0, 0, 0.95),
-    rgba(255, 110, 40, 0.9),
-    rgba(255, 255, 255, 0.5)
+    rgba(255, 0, 0, 0.75),
+    rgba(255, 122, 47, 0.65),
+    rgba(255, 255, 255, 0.25)
   );
-  box-shadow: 0 24px 55px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.28);
 }
 
 .about-content {
-  min-height: 500px;
-  padding: 44px;
-  display: grid;
-  grid-template-columns: 1.35fr 0.85fr;
-  gap: 34px;
-  align-items: center;
-  border-radius: 25px;
-  background: rgba(20, 20, 28, 0.84);
-  backdrop-filter: blur(8px);
-  color: white;
+  min-height: auto;
+  padding: 22px 22px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  border-radius: 24px;
+  background: rgba(10, 14, 28, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  color: #ffffff;
 }
 
 .about-text {
@@ -44,68 +47,70 @@
 
 .about-badge {
   display: inline-block;
-  margin-bottom: 18px;
-  padding: 8px 16px;
+  margin-bottom: 8px;
+  padding: 5px 12px;
   border-radius: 999px;
-  background: rgba(255, 0, 0, 0.22);
-  border: 1px solid rgba(255, 255, 255, 0.24);
-  color: white;
-  font-size: 0.78rem;
+  background: rgba(255, 0, 0, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  font-size: 0.65rem;
   font-weight: 800;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
 .about-text h1 {
-  margin: 0 0 22px;
-  color: white;
-  font-size: clamp(2rem, 4vw, 3.1rem);
-  line-height: 1.08;
+  margin: 0 0 12px;
+  color: #ffffff;
+  font-size: clamp(1.75rem, 2.6vw, 2.25rem);
+  line-height: 1.05;
   font-weight: 900;
   text-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
 }
 
 .about-text p {
-  max-width: 680px;
-  margin: 0 0 17px;
-  color: rgba(255, 255, 255, 0.88);
-  font-size: 1.05rem;
-  line-height: 1.65;
+  max-width: 100%;
+  margin: 0 0 10px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.88rem;
+  line-height: 1.45;
   font-weight: 500;
 }
 
 .about-highlight {
-  color: white !important;
-  font-size: 1.15rem !important;
+  margin-top: 4px !important;
+  color: #ffffff !important;
+  font-size: 0.95rem !important;
   font-weight: 800 !important;
 }
 
 .about-actions {
-  margin-top: 28px;
+  margin-top: 14px;
 }
 
 .about-home-button {
+  min-width: 120px;
+  height: 38px;
+  padding: 0 16px;
   display: inline-flex;
-  justify-content: center;
   align-items: center;
-  min-width: 150px;
-  height: 44px;
-  padding: 0 22px;
+  justify-content: center;
   border-radius: 999px;
-  background: #ff0000;
-  color: white;
+  background: rgba(255, 255, 255, 0.94);
+  color: #161a42;
   text-decoration: none;
-  font-size: 0.95rem;
+  font-size: 0.84rem;
   font-weight: 800;
-  box-shadow: 0 12px 24px rgba(255, 0, 0, 0.28);
-  transition: transform 0.22s ease, background-color 0.22s ease,
-    box-shadow 0.22s ease;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
 }
 
 .about-home-button:hover {
-  transform: translateY(-3px);
-  background: #d90000;
-  box-shadow: 0 16px 30px rgba(255, 0, 0, 0.38);
+  transform: translateY(-2px);
+  background: #ff0000;
+  color: #ffffff;
 }
 
 .about-profile {
@@ -116,12 +121,12 @@
 }
 
 .about-image-wrapper {
-  width: 250px;
-  height: 250px;
-  padding: 6px;
+  width: 175px;
+  height: 175px;
+  padding: 5px;
   border-radius: 50%;
-  background: linear-gradient(135deg, white, #ff3b30, #ff8a2a);
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+  background: linear-gradient(135deg, #ffffff, #ff3b30, #ff8a2a);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.32);
 }
 
 .foto-about {
@@ -131,19 +136,19 @@
   border-radius: 50%;
   object-fit: cover;
   object-position: center top;
-  background-color: white;
+  background-color: #ffffff;
 }
 
 .button-about {
-  margin-top: 26px;
+  margin-top: 16px;
   text-align: center;
 }
 
 .button-about span {
   display: block;
-  margin-bottom: 14px;
-  color: rgba(255, 255, 255, 0.88);
-  font-size: 0.88rem;
+  margin-bottom: 10px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.72rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -152,28 +157,30 @@
 .social-links {
   display: flex;
   justify-content: center;
-  gap: 12px;
+  gap: 10px;
 }
 
 .social-button {
-  width: 48px;
-  height: 48px;
+  width: 42px;
+  height: 42px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 14px;
+  border-radius: 13px;
   background: rgba(255, 255, 255, 0.96);
   color: #111827;
   text-decoration: none;
-  font-size: 1.45rem;
-  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.22);
-  transition: transform 0.22s ease, background-color 0.22s ease,
+  font-size: 1.25rem;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.2);
+  transition:
+    transform 0.22s ease,
+    background-color 0.22s ease,
     color 0.22s ease;
 }
 
 .social-button:hover {
-  transform: translateY(-4px);
-  color: white;
+  transform: translateY(-3px);
+  color: #ffffff;
 }
 
 .social-button.twitter:hover {
@@ -192,17 +199,79 @@
   background: #0a66c2;
 }
 
-@media only screen and (max-width: 900px) {
+@media (max-width: 1366px) {
   .about-container {
-    min-height: auto;
-    padding: 28px 14px;
-    align-items: flex-start;
+    padding: 10px 1.4vw 10px 24px;
+    background-position: left center;
+  }
+
+  .about-card {
+    width: 460px;
   }
 
   .about-content {
-    grid-template-columns: 1fr;
-    gap: 34px;
-    padding: 30px 22px;
+    padding: 17px 18px 16px;
+    gap: 14px;
+  }
+
+  .about-text h1 {
+    font-size: 1.8rem;
+    margin-bottom: 9px;
+  }
+
+  .about-text p {
+    font-size: 0.78rem;
+    line-height: 1.38;
+    margin-bottom: 8px;
+  }
+
+  .about-highlight {
+    font-size: 0.84rem !important;
+  }
+
+  .about-actions {
+    margin-top: 10px;
+  }
+
+  .about-home-button {
+    height: 36px;
+    font-size: 0.8rem;
+  }
+
+  .about-image-wrapper {
+    width: 140px;
+    height: 140px;
+  }
+
+  .button-about {
+    margin-top: 12px;
+  }
+
+  .social-button {
+    width: 38px;
+    height: 38px;
+    font-size: 1.15rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-container {
+    min-height: auto;
+    height: auto;
+    padding: 20px 14px;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: visible;
+    background-position: center;
+  }
+
+  .about-card {
+    width: 100%;
+    margin-top: 0;
+  }
+
+  .about-content {
+    padding: 22px 18px 20px;
     text-align: center;
   }
 
@@ -214,28 +283,17 @@
     max-width: 100%;
   }
 
+  .about-actions {
+    display: flex;
+    justify-content: center;
+  }
+
+  .about-home-button {
+    width: 100%;
+  }
+
   .about-image-wrapper {
-    width: 210px;
-    height: 210px;
-  }
-}
-
-@media only screen and (max-width: 480px) {
-  .about-content {
-    padding: 26px 18px;
-  }
-
-  .about-text h1 {
-    font-size: 2rem;
-  }
-
-  .about-text p {
-    font-size: 0.96rem;
-  }
-
-  .social-button {
-    width: 42px;
-    height: 42px;
-    font-size: 1.3rem;
+    width: 170px;
+    height: 170px;
   }
 }
