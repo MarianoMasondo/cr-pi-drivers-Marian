@@ -29,8 +29,6 @@ const Home = () => {
     <div className="home-container">
       <div className="filter-container">
         <Searchbar className="searchbar" />
-      </div>
-      <div className="filter-container">
         <OrderDrivers className="order-drivers" />
         <Filter />
       </div>
