@@ -12,7 +12,7 @@ const Home = () => {
   const dispatch = useDispatch();
   const drivers = useSelector((state) => state.drivers);
   const [currentPage, setCurrentPage] = useState(1);
-  const [driversPerPage] = useState(9);
+  const [driversPerPage] = useState(10);
   const indexOfLastDriver = currentPage * driversPerPage;
   const indexOfFirstDriver = indexOfLastDriver - driversPerPage;
   const currentDrivers = drivers.slice(indexOfFirstDriver, indexOfLastDriver);
