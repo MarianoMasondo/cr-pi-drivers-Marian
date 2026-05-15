@@ -146,12 +146,11 @@ const Form = () => {
     <main className="form-container">
       <form onSubmit={handleSubmit} className="form-card">
         <div className="form-header">
-          <div>
+          <div className="form-header-text">
             <span className="form-badge">New driver</span>
             <h1 className="h1-form">Create a driver</h1>
             <p className="form-subtitle">
-              Complete the information below to add a new driver to your
-              database.
+              Add a new driver to your database.
             </p>
           </div>
 
@@ -169,7 +168,7 @@ const Form = () => {
               name="name"
               value={form.name}
               onChange={handleInputChange}
-              placeholder="Example: Lewis"
+              placeholder="Lewis"
             />
             {errors.name && <p className="error-text">{errors.name}</p>}
           </section>
@@ -182,7 +181,7 @@ const Form = () => {
               name="lastname"
               value={form.lastname}
               onChange={handleInputChange}
-              placeholder="Example: Hamilton"
+              placeholder="Hamilton"
             />
             {errors.lastname && (
               <p className="error-text">{errors.lastname}</p>
@@ -197,7 +196,7 @@ const Form = () => {
               name="nationality"
               value={form.nationality}
               onChange={handleInputChange}
-              placeholder="Example: British"
+              placeholder="British"
             />
             {errors.nationality && (
               <p className="error-text">{errors.nationality}</p>
@@ -226,7 +225,7 @@ const Form = () => {
               name="image"
               value={form.image}
               onChange={handleInputChange}
-              placeholder="Paste an image URL..."
+              placeholder="https://..."
             />
             {errors.image && <p className="error-text">{errors.image}</p>}
           </section>
@@ -240,7 +239,7 @@ const Form = () => {
               name="description"
               value={form.description}
               onChange={handleInputChange}
-              placeholder="Write a short description about the driver..."
+              placeholder="Short description..."
             />
             {errors.description && (
               <p className="error-text">{errors.description}</p>
