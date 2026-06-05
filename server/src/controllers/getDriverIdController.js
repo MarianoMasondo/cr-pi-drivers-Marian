@@ -4,7 +4,7 @@ const data = require("../../api/db.json");
 const driverId = async (id) => {
   if (id.length < 5) {
     const driverData = data.drivers.find(
-      (driver) => Number(driver.id) === Number(id)
+      (driver) => Number(driver.id) === Number(id),
     );
 
     if (!driverData) {

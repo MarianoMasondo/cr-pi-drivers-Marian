@@ -8,7 +8,7 @@ const createDataDriver = async (
   image,
   nationality,
   birthdate,
-  teams
+  teams,
 ) => {
   try {
     const newDriver = await Driver.create({

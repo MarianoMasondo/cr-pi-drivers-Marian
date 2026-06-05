@@ -23,7 +23,7 @@ const driverName = async (name) => {
   });
 
   const apiDrivers = data.drivers.filter((driver) =>
-    driver.name.forename.toLowerCase().includes(lowercaseName)
+    driver.name.forename.toLowerCase().includes(lowercaseName),
   );
 
   const apiDataDrivers = apiDrivers.map((driver) => ({

@@ -31,15 +31,15 @@ const allTeams = async () => {
           where: {
             name: teamName,
           },
-        })
-      )
+        }),
+      ),
     );
 
     return await Team.findAll();
   } catch (error) {
     console.error(
       "PostgreSQL is unavailable. Returning local teams only:",
-      error.message
+      error.message,
     );
 
     return localTeams;

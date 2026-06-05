@@ -5,11 +5,9 @@ const postNewDriver = async (req, res) => {
     req.body;
 
   if (!Array.isArray(teams) || teams.length === 0) {
-    return res
-      .status(400)
-      .json({
-        error: "The 'teams' field should not be empty and must be an array",
-      });
+    return res.status(400).json({
+      error: "The 'teams' field should not be empty and must be an array",
+    });
   }
 
   if (
@@ -33,7 +31,7 @@ const postNewDriver = async (req, res) => {
       image,
       nationality,
       birthdate,
-      teams
+      teams,
     );
     res.status(201).json(newDriver);
   } catch (error) {

@@ -53,14 +53,14 @@ const allDrivers = async () => {
         birthdate,
         teams: Teams.map((team) => team.name),
         createDb,
-      })
+      }),
     );
 
     return [...dataDrivers, ...dbDataDrivers];
   } catch (error) {
     console.error(
       "PostgreSQL is unavailable. Returning local drivers only:",
-      error.message
+      error.message,
     );
 
     return dataDrivers;
