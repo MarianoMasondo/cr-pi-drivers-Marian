@@ -65,7 +65,7 @@ https://cr-pi-drivers-marian-api.onrender.com/drivers
 
 - Vercel para el frontend.
 - Render para el backend.
-- PostgreSQL en Render para la base de datos.
+- Neon para alojar la base de datos PostgreSQL.
 
 ---
 
