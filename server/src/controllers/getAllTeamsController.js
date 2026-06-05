@@ -2,38 +2,47 @@ const { Team } = require("../db");
 const data = require("../../api/db.json");
 
 const allTeams = async () => {
+  const drivers = data.drivers;
+  const uniqueTeamNames = new Set();
+
+  drivers.forEach((driver) => {
+    if (driver.teams) {
+      const teams = driver.teams.split(/\s*,\s*/);
+
+      teams.forEach((teamName) => {
+        if (teamName) {
+          uniqueTeamNames.add(teamName);
+        }
+      });
+    }
+  });
+
+  const teamsArray = [...uniqueTeamNames].sort();
+
+  const localTeams = teamsArray.map((name, index) => ({
+    id: `local-${index}`,
+    name,
+  }));
+
   try {
-    const drivers = data.drivers;
-
-    const uniqueTeamNames = new Set();
-
-    drivers.forEach((driver) => {
-      if (driver.teams) {
-        let teams = driver.teams.split(/\s*,\s*/);
-
-        teams.forEach((teamName) => {
-          if (teamName && !uniqueTeamNames.has(teamName)) {
-            uniqueTeamNames.add(teamName);
-          }
-        });
-      }
-    });
-
-    const teamsArray = [...uniqueTeamNames];
-
     await Promise.all(
       teamsArray.map((teamName) =>
         Team.findOrCreate({
-          where: { name: teamName },
+          where: {
+            name: teamName,
+          },
         })
       )
     );
 
-    const allDataTeams = await Team.findAll();
-
-    return allDataTeams;
+    return await Team.findAll();
   } catch (error) {
-    throw error;
+    console.error(
+      "PostgreSQL is unavailable. Returning local teams only:",
+      error.message
+    );
+
+    return localTeams;
   }
 };
 
