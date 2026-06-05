@@ -145,9 +145,7 @@ const Form = () => {
 
             <h1 className="h1-form">Create a driver</h1>
 
-            <p className="form-subtitle">
-              Add a new driver to your database.
-            </p>
+            <p className="form-subtitle">Add a new driver to your database.</p>
           </div>
 
           <Link to="/home" className="back-home">
@@ -175,9 +173,7 @@ const Form = () => {
             <label>Lastname</label>
 
             <input
-              className={`input-container ${
-                errors.lastname ? "error" : ""
-              }`}
+              className={`input-container ${errors.lastname ? "error" : ""}`}
               type="text"
               name="lastname"
               value={form.lastname}
@@ -185,18 +181,14 @@ const Form = () => {
               placeholder="Hamilton"
             />
 
-            {errors.lastname && (
-              <p className="error-text">{errors.lastname}</p>
-            )}
+            {errors.lastname && <p className="error-text">{errors.lastname}</p>}
           </section>
 
           <section className="form-field">
             <label>Nationality</label>
 
             <input
-              className={`input-container ${
-                errors.nationality ? "error" : ""
-              }`}
+              className={`input-container ${errors.nationality ? "error" : ""}`}
               type="text"
               name="nationality"
               value={form.nationality}
@@ -213,9 +205,7 @@ const Form = () => {
             <label>Birthdate</label>
 
             <input
-              className={`input-container ${
-                errors.birthdate ? "error" : ""
-              }`}
+              className={`input-container ${errors.birthdate ? "error" : ""}`}
               type="date"
               name="birthdate"
               value={form.birthdate}
@@ -283,9 +273,7 @@ const Form = () => {
                 You can select up to 5 teams.
               </small>
 
-              {errors.teams && (
-                <p className="error-text">{errors.teams}</p>
-              )}
+              {errors.teams && <p className="error-text">{errors.teams}</p>}
             </div>
 
             {form.teams.length > 0 && (

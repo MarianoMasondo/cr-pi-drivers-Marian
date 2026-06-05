@@ -46,7 +46,11 @@ const OrderDrivers = () => {
       <div className="control-group">
         <label className="control-label">Alphabetical</label>
 
-        <select className="control-select" onChange={handleOrder} defaultValue="default">
+        <select
+          className="control-select"
+          onChange={handleOrder}
+          defaultValue="default"
+        >
           <option value="default">Order A-Z / Z-A</option>
           <option value="asc">A to Z</option>
           <option value="desc">Z to A</option>

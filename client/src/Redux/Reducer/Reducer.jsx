@@ -63,7 +63,7 @@ const Reducer = (state = initialState, action) => {
         drivers: [...driversCopy].filter((driver) =>
           removeAccents(driver.name)
             .toLowerCase()
-            .includes(normalizedSearchValue)
+            .includes(normalizedSearchValue),
         ),
       };
     }
@@ -115,7 +115,7 @@ const Reducer = (state = initialState, action) => {
         action.payload === "all"
           ? drivers
           : drivers.filter(
-              (driver) => driver.teams && driver.teams.includes(action.payload)
+              (driver) => driver.teams && driver.teams.includes(action.payload),
             );
       return {
         ...state,

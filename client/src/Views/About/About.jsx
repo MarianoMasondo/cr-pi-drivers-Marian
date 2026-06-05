@@ -1,7 +1,12 @@
 import "./About.css";
 import picture from "../../assets/picture.png";
 import { Link } from "react-router-dom";
-import { FaGithub, FaInstagram, FaLinkedinIn, FaXTwitter } from "react-icons/fa6";
+import {
+  FaGithub,
+  FaInstagram,
+  FaLinkedinIn,
+  FaXTwitter,
+} from "react-icons/fa6";
 
 export default function About() {
   return (
@@ -25,9 +30,7 @@ export default function About() {
               many obstacles.
             </p>
 
-            <p className="about-highlight">
-              We should have a coffee and talk!
-            </p>
+            <p className="about-highlight">We should have a coffee and talk!</p>
 
             <div className="about-actions">
               <Link to="/home" className="about-home-button">
