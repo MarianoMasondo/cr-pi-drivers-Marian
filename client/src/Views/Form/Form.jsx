@@ -1,12 +1,12 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { allTeams } from "../../Redux/Actions/Actions";
+import { Link, useNavigate } from "react-router-dom";
+import { allTeams, getDrivers } from "../../Redux/Actions/Actions";
 import "./Form.css";
-import { Link } from "react-router-dom";
 
 const validate = (form) => {
-  let errors = {};
+  const errors = {};
 
   if (!form.name.trim()) {
     errors.name = "Please insert a valid name!";
@@ -47,6 +47,8 @@ const validate = (form) => {
 
 const Form = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const teams = useSelector((state) => state.teams);
 
   const [form, setForm] = useState({
@@ -65,37 +67,28 @@ const Form = () => {
     dispatch(allTeams());
   }, [dispatch]);
 
-  const resetForm = () => {
-    setForm({
-      name: "",
-      lastname: "",
-      nationality: "",
-      image: "",
-      birthdate: "",
-      description: "",
-      teams: [],
-    });
-
-    setErrors({});
-  };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const formErrors = validate(form);
 
-    if (Object.keys(formErrors).length === 0) {
-      axios
-        .post("/drivers", form)
-        .then(() => {
-          alert("Driver created successfully");
-          resetForm();
-        })
-        .catch(() => {
-          alert("Error creating driver");
-        });
-    } else {
+    if (Object.keys(formErrors).length > 0) {
       setErrors(formErrors);
+      return;
+    }
+
+    try {
+      await axios.post("/drivers", form);
+
+      await dispatch(getDrivers());
+
+      alert("Driver created successfully");
+
+      navigate("/home");
+    } catch (error) {
+      console.error("Error creating driver:", error);
+
+      alert("Error creating driver");
     }
   };
 
@@ -126,7 +119,8 @@ const Form = () => {
     if (!selectedTeam) return;
 
     if (form.teams.length >= 5) {
-      return alert("Cannot choose more than five teams");
+      alert("Cannot choose more than five teams");
+      return;
     }
 
     if (!form.teams.includes(selectedTeam)) {
@@ -148,7 +142,9 @@ const Form = () => {
         <div className="form-header">
           <div className="form-header-text">
             <span className="form-badge">New driver</span>
+
             <h1 className="h1-form">Create a driver</h1>
+
             <p className="form-subtitle">
               Add a new driver to your database.
             </p>
@@ -162,6 +158,7 @@ const Form = () => {
         <div className="form-grid">
           <section className="form-field">
             <label>Name</label>
+
             <input
               className={`input-container ${errors.name ? "error" : ""}`}
               type="text"
@@ -170,19 +167,24 @@ const Form = () => {
               onChange={handleInputChange}
               placeholder="Lewis"
             />
+
             {errors.name && <p className="error-text">{errors.name}</p>}
           </section>
 
           <section className="form-field">
             <label>Lastname</label>
+
             <input
-              className={`input-container ${errors.lastname ? "error" : ""}`}
+              className={`input-container ${
+                errors.lastname ? "error" : ""
+              }`}
               type="text"
               name="lastname"
               value={form.lastname}
               onChange={handleInputChange}
               placeholder="Hamilton"
             />
+
             {errors.lastname && (
               <p className="error-text">{errors.lastname}</p>
             )}
@@ -190,14 +192,18 @@ const Form = () => {
 
           <section className="form-field">
             <label>Nationality</label>
+
             <input
-              className={`input-container ${errors.nationality ? "error" : ""}`}
+              className={`input-container ${
+                errors.nationality ? "error" : ""
+              }`}
               type="text"
               name="nationality"
               value={form.nationality}
               onChange={handleInputChange}
               placeholder="British"
             />
+
             {errors.nationality && (
               <p className="error-text">{errors.nationality}</p>
             )}
@@ -205,13 +211,17 @@ const Form = () => {
 
           <section className="form-field">
             <label>Birthdate</label>
+
             <input
-              className={`input-container ${errors.birthdate ? "error" : ""}`}
+              className={`input-container ${
+                errors.birthdate ? "error" : ""
+              }`}
               type="date"
               name="birthdate"
               value={form.birthdate}
               onChange={handleInputChange}
             />
+
             {errors.birthdate && (
               <p className="error-text">{errors.birthdate}</p>
             )}
@@ -219,6 +229,7 @@ const Form = () => {
 
           <section className="form-field form-field-full">
             <label>Image URL</label>
+
             <input
               className={`input-container ${errors.image ? "error" : ""}`}
               type="text"
@@ -227,11 +238,13 @@ const Form = () => {
               onChange={handleInputChange}
               placeholder="https://..."
             />
+
             {errors.image && <p className="error-text">{errors.image}</p>}
           </section>
 
           <section className="form-field form-field-full">
             <label>Description</label>
+
             <textarea
               className={`input-container textarea-container ${
                 errors.description ? "error" : ""
@@ -241,6 +254,7 @@ const Form = () => {
               onChange={handleInputChange}
               placeholder="Short description..."
             />
+
             {errors.description && (
               <p className="error-text">{errors.description}</p>
             )}
@@ -269,7 +283,9 @@ const Form = () => {
                 You can select up to 5 teams.
               </small>
 
-              {errors.teams && <p className="error-text">{errors.teams}</p>}
+              {errors.teams && (
+                <p className="error-text">{errors.teams}</p>
+              )}
             </div>
 
             {form.teams.length > 0 && (
@@ -277,6 +293,7 @@ const Form = () => {
                 {form.teams.map((team) => (
                   <span className="team-span" key={team}>
                     {team}
+
                     <button
                       type="button"
                       className="delete-btn"
